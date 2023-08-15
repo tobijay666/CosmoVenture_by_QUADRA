@@ -33,118 +33,122 @@ class _SignupScreenState extends State<SignupScreen> {
   }
 
   _bodyWidget() {
-    return Column(
-      children: [
-        const Image(
-          image: AssetImage(AppImages.loginImage),
-        ),
-        Expanded(
-          child: Container(
-            width: MediaQuery.of(context).size.width,
-            height: MediaQuery.of(context).size.height / 1.4,
-            decoration: const BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage(AppImages.loginBottomImage),
-                fit: BoxFit.cover,
+    return SafeArea(
+      child: Column(
+        children: [
+          const Image(
+            image: AssetImage(AppImages.loginImage),
+          ),
+          Expanded(
+            child: Container(
+              width: MediaQuery.of(context).size.width,
+              height: MediaQuery.of(context).size.height / 1.4,
+              decoration: const BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage(AppImages.loginBottomImage),
+                  fit: BoxFit.cover,
+                ),
               ),
-            ),
-            child: Padding(
-              padding: const EdgeInsets.only(left: 20, right: 20),
-              child: SingleChildScrollView(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Text(
-                      AppStrings.signUpWelcome,
-                      style:
-                          Theme.of(context).textTheme.displayMedium!.copyWith(
-                                color: AppColors.whiteColor,
-                              ),
-                    ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    CustomTextField(
-                      textInputAction: TextInputAction.next,
-                      textEditingController: idController,
-                      labelText: AppStrings.id,
-                    ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    CustomTextField(
-                      textInputAction: TextInputAction.next,
-                      textEditingController: unameController,
-                      labelText: AppStrings.uname,
-                    ),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    CustomTextField(
-                      textInputAction: TextInputAction.next,
-                      textEditingController: passwordController,
-                      labelText: AppStrings.password,
-                      obscureText: true,
-                      lines: 1,
-                    ),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    CustomTextField(
-                      textInputAction: TextInputAction.next,
-                      textEditingController: CPasswordController,
-                      labelText: AppStrings.cPassword,
-                      obscureText: true,
-                      lines: 1,
-                    ),
-                    const SizedBox(
-                      height: 40,
-                    ),
-                    GradientButton(
-                      isDisabled: false,
-                      title: AppStrings.signUp,
-                      onPress: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => WalkThroughScreen()));
-                        idController.clear();
-                        unameController.clear();
-                        CPasswordController.clear();
-                        passwordController.clear();
-                      },
-                    ),
-                    const SizedBox(
-                      height: 8,
-                    ),
-                    Center(
-                      child: TextButton(
-                        onPressed: () {
+              child: Padding(
+                padding: const EdgeInsets.only(left: 20, right: 20),
+                child: SingleChildScrollView(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text(
+                        AppStrings.signUpWelcome,
+                        style:
+                            Theme.of(context).textTheme.displayMedium!.copyWith(
+                                  color: AppColors.whiteColor,
+                                ),
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      CustomTextField(
+                        textInputAction: TextInputAction.next,
+                        textEditingController: idController,
+                        labelText: AppStrings.id,
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      CustomTextField(
+                        textInputAction: TextInputAction.next,
+                        textEditingController: unameController,
+                        labelText: AppStrings.uname,
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      CustomTextField(
+                        textInputAction: TextInputAction.next,
+                        textEditingController: passwordController,
+                        labelText: AppStrings.password,
+                        obscureText: true,
+                        lines: 1,
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      CustomTextField(
+                        textInputAction: TextInputAction.next,
+                        textEditingController: CPasswordController,
+                        labelText: AppStrings.cPassword,
+                        obscureText: true,
+                        lines: 1,
+                      ),
+                      const SizedBox(
+                        height: 40,
+                      ),
+                      GradientButton(
+                        isDisabled: false,
+                        title: AppStrings.signUp,
+                        onPress: () {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => LoginScreen()));
+                                  builder: (context) => WalkThroughScreen()));
+                          idController.clear();
+                          unameController.clear();
+                          CPasswordController.clear();
+                          passwordController.clear();
                         },
-                        child: Text(
-                          AppStrings.signInLink,
-                          style:
-                              Theme.of(context).textTheme.bodyMedium!.copyWith(
-                                    color: AppColors.outlineColor,
-                                  ),
+                      ),
+                      const SizedBox(
+                        height: 8,
+                      ),
+                      Center(
+                        child: TextButton(
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => LoginScreen()));
+                          },
+                          child: Text(
+                            AppStrings.signInLink,
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyMedium!
+                                .copyWith(
+                                  color: AppColors.outlineColor,
+                                ),
+                          ),
                         ),
                       ),
-                    ),
-                    SizedBox(
-                      height: 10,
-                    )
-                  ],
+                      SizedBox(
+                        height: 10,
+                      )
+                    ],
+                  ),
                 ),
               ),
             ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

@@ -31,113 +31,117 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   _bodyWidget() {
-    return Column(
-      children: [
-        const Image(
-          image: AssetImage(AppImages.loginImage),
-        ),
-        Container(
-          width: MediaQuery.of(context).size.width,
-          height: MediaQuery.of(context).size.height / 1.5,
-          decoration: const BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage(AppImages.loginBottomImage),
-              fit: BoxFit.cover,
-            ),
+    return SafeArea(
+      child: Column(
+        children: [
+          const Image(
+            image: AssetImage(AppImages.loginImage),
           ),
-          child: Padding(
-            padding: const EdgeInsets.only(left: 20, right: 20),
-            child: SingleChildScrollView(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Text(
-                    AppStrings.loginWelcome,
-                    style: Theme.of(context).textTheme.displayMedium!.copyWith(
-                          color: AppColors.whiteColor,
-                        ),
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  CustomTextField(
-                    textInputAction: TextInputAction.next,
-                    textEditingController: idController,
-                    labelText: AppStrings.id,
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  CustomTextField(
-                    textInputAction: TextInputAction.next,
-                    textEditingController: passwordController,
-                    labelText: AppStrings.password,
-                    obscureText: true,
-                    lines: 1,
-                  ),
-                  const SizedBox(
-                    height: 8,
-                  ),
-                  TextButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => ForgotPasswordScreen()),
-                      );
-                    },
-                    child: Text(
-                      AppStrings.forgotPassword,
-                      style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                            color: AppColors.outlineColor,
-                          ),
+          Container(
+            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height / 1.5,
+            decoration: const BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage(AppImages.loginBottomImage),
+                fit: BoxFit.cover,
+              ),
+            ),
+            child: Padding(
+              padding: const EdgeInsets.only(left: 20, right: 20),
+              child: SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Text(
+                      AppStrings.loginWelcome,
+                      style:
+                          Theme.of(context).textTheme.displayMedium!.copyWith(
+                                color: AppColors.whiteColor,
+                              ),
                     ),
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  GradientButton(
-                    isDisabled: false,
-                    title: AppStrings.signIn,
-                    onPress: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => MyHomePage(
-                                  index: 2,
-                                )),
-                      );
-                      idController.clear();
-                      passwordController.clear();
-                    },
-                  ),
-                  const SizedBox(
-                    height: 8,
-                  ),
-                  Center(
-                    child: TextButton(
+                    SizedBox(
+                      height: 20,
+                    ),
+                    CustomTextField(
+                      textInputAction: TextInputAction.next,
+                      textEditingController: idController,
+                      labelText: AppStrings.id,
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    CustomTextField(
+                      textInputAction: TextInputAction.next,
+                      textEditingController: passwordController,
+                      labelText: AppStrings.password,
+                      obscureText: true,
+                      lines: 1,
+                    ),
+                    const SizedBox(
+                      height: 8,
+                    ),
+                    TextButton(
                       onPressed: () {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => SignupScreen()),
+                              builder: (context) => ForgotPasswordScreen()),
                         );
                       },
                       child: Text(
-                        AppStrings.signUpLink,
+                        AppStrings.forgotPassword,
                         style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                               color: AppColors.outlineColor,
                             ),
                       ),
                     ),
-                  ),
-                ],
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    GradientButton(
+                      isDisabled: false,
+                      title: AppStrings.signIn,
+                      onPress: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => MyHomePage(
+                                    index: 2,
+                                  )),
+                        );
+                        idController.clear();
+                        passwordController.clear();
+                      },
+                    ),
+                    const SizedBox(
+                      height: 8,
+                    ),
+                    Center(
+                      child: TextButton(
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => SignupScreen()),
+                          );
+                        },
+                        child: Text(
+                          AppStrings.signUpLink,
+                          style:
+                              Theme.of(context).textTheme.bodyMedium!.copyWith(
+                                    color: AppColors.outlineColor,
+                                  ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

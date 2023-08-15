@@ -22,7 +22,7 @@ class _DiscoverScreenState extends State<DiscoverScreen> {
         automaticallyImplyLeading: false,
         backgroundColor: Colors.black,
         title: Text(
-          AppStrings.search,
+          AppStrings.discover,
           style: Theme.of(context).textTheme.bodyLarge!.copyWith(
                 color: AppColors.whiteColor,
               ),

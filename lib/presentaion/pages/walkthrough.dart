@@ -1,4 +1,5 @@
 import 'package:cosmoventure/main.dart';
+import 'package:cosmoventure/utils/app_colors.dart';
 import 'package:cosmoventure/utils/app_images.dart';
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
@@ -71,15 +72,41 @@ class _WalkThroughScreenState extends State<WalkThroughScreen> {
         Align(
           alignment: Alignment.bottomCenter,
           child: Padding(
-            padding: const EdgeInsets.only(bottom: 16.0),
-            child: DotsIndicator(
-              dotsCount: _pages.length,
-              position: _currentPage,
-              decorator: DotsDecorator(
-                activeColor: Colors.blue,
-                size: const Size.square(10.0),
-                activeSize: const Size(20.0, 10.0),
-              ),
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.end,
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    DotsIndicator(
+                      dotsCount: _pages.length,
+                      position: _currentPage,
+                      decorator: DotsDecorator(
+                        activeColor: AppColors.outlineColor,
+                        size: const Size.square(10.0),
+                        activeSize: const Size(20.0, 10.0),
+                      ),
+                    ),
+                    GradientButton(
+                      width: MediaQuery.of(context).size.width / 5,
+                      isDisabled: false,
+                      title: AppStrings.skip,
+                      onPress: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => MyHomePage(
+                                index: 2,
+                              ),
+                            ));
+                      },
+                    ),
+                  ],
+                ),
+              ],
             ),
           ),
         ),
@@ -136,26 +163,6 @@ class WalkthroughPage extends StatelessWidget {
                   textAlign: TextAlign.center,
                 ),
               ],
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Align(
-              alignment: Alignment.bottomRight,
-              child: GradientButton(
-                width: MediaQuery.of(context).size.width / 3,
-                isDisabled: false,
-                title: AppStrings.skip,
-                onPress: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => MyHomePage(
-                          index: 2,
-                        ),
-                      ));
-                },
-              ),
             ),
           ),
         ],

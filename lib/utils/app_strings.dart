@@ -32,4 +32,18 @@ class AppStrings {
 
   ///walkthrough
   static const skip = "Skip";
+
+  ///home
+  static const sliderText1 = "Discover New Experiences By Exploring Space";
+  static const seeAll = "See All";
+  static const popularDestinations = "Popular Destinations";
+  static const upcomingJourneys = "Upcoming Journeys";
+  static const sliderText2 =
+      "We were one of the first companies in the world to accept tours to space with multiple destinations in them";
+  static const mars = "Mars";
+  static const venus = "Venus";
+  static const marsDescription =
+      "Mars, often called the 'Red Planet', has been a target for space travel due to its .Mars's radius is second smallest among the planets in the Solar System at 3,389.5 km.";
+  static const venusDescription =
+      "Venus is the second planet from the Sun and is Earth's closest planetary neighbor.It is a rocky planet with the densest atmosphere of all the rocky bodies in the Solar System";
 }
