@@ -29,4 +29,7 @@ class AppStrings {
   static const search = "Search";
   static const settings = "Settings";
   static const discover = "Discover";
+
+  ///walkthrough
+  static const skip = "Skip";
 }

@@ -1,9 +1,9 @@
-import 'package:cosmoventure/pages/chat.dart';
-import 'package:cosmoventure/pages/discover.dart';
-import 'package:cosmoventure/pages/home.dart';
-import 'package:cosmoventure/pages/search.dart';
-import 'package:cosmoventure/pages/settings.dart';
-import 'package:cosmoventure/pages/splash.dart';
+import 'package:cosmoventure/presentaion/pages/chat.dart';
+import 'package:cosmoventure/presentaion/pages/discover.dart';
+import 'package:cosmoventure/presentaion/pages/home.dart';
+import 'package:cosmoventure/presentaion/pages/search.dart';
+import 'package:cosmoventure/presentaion/pages/settings.dart';
+import 'package:cosmoventure/presentaion/pages/splash.dart';
 import 'package:cosmoventure/utils/app_colors.dart';
 import 'package:cosmoventure/utils/app_strings.dart';
 import 'package:flutter/material.dart';
