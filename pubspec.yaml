@@ -49,10 +49,12 @@ dependencies:
   path_provider: ^2.0.13
   firebase_ui_auth: ^1.1.9
   stats: ^2.0.0
+  swipe_to: 1.0.2
   dio: ^4.0.6
   image_picker: ^0.8.6+1
   carousel_slider: ^4.2.1
   firebase_storage: ^11.0.14
+  curved_navigation_bar: ^1.0.3
 
 dev_dependencies:
   flutter_test:
