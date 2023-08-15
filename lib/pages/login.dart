@@ -1,3 +1,6 @@
+import 'package:cosmoventure/main.dart';
+import 'package:cosmoventure/pages/forgetPassword.dart';
+import 'package:cosmoventure/pages/home.dart';
 import 'package:cosmoventure/pages/register.dart';
 import 'package:cosmoventure/utils/app_images.dart';
 import 'package:cosmoventure/utils/app_strings.dart';
@@ -28,23 +31,23 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   _bodyWidget() {
-    return SingleChildScrollView(
-      child: Column(
-        children: [
-          const Image(
-            image: AssetImage(AppImages.loginImage),
-          ),
-          Container(
-            width: MediaQuery.of(context).size.width,
-            height: MediaQuery.of(context).size.height / 1.5,
-            decoration: const BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage(AppImages.loginBottomImage),
-                fit: BoxFit.cover,
-              ),
+    return Column(
+      children: [
+        const Image(
+          image: AssetImage(AppImages.loginImage),
+        ),
+        Container(
+          width: MediaQuery.of(context).size.width,
+          height: MediaQuery.of(context).size.height / 1.5,
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage(AppImages.loginBottomImage),
+              fit: BoxFit.cover,
             ),
-            child: Padding(
-              padding: const EdgeInsets.only(left: 20, right: 20),
+          ),
+          child: Padding(
+            padding: const EdgeInsets.only(left: 20, right: 20),
+            child: SingleChildScrollView(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisSize: MainAxisSize.min,
@@ -77,7 +80,13 @@ class _LoginScreenState extends State<LoginScreen> {
                     height: 8,
                   ),
                   TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => ForgotPasswordScreen()),
+                      );
+                    },
                     child: Text(
                       AppStrings.forgotPassword,
                       style: Theme.of(context).textTheme.bodyMedium!.copyWith(
@@ -92,6 +101,13 @@ class _LoginScreenState extends State<LoginScreen> {
                     isDisabled: false,
                     title: AppStrings.signIn,
                     onPress: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => MyHomePage(
+                                  index: 2,
+                                )),
+                      );
                       idController.clear();
                       passwordController.clear();
                     },
@@ -120,8 +136,8 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
             ),
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }

@@ -55,7 +55,7 @@ class _SignupScreenState extends State<SignupScreen> {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Text(
-                      AppStrings.loginWelcome,
+                      AppStrings.signUpWelcome,
                       style:
                           Theme.of(context).textTheme.displayMedium!.copyWith(
                                 color: AppColors.whiteColor,

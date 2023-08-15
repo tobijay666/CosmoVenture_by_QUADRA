@@ -13,10 +13,13 @@ class AppStrings {
   static const signIn = "Sign In";
   static const signUpLink = "Don’t have an account ? Sign Up";
   static const signInLink = "Already have an account ? Sign In";
+  static const backToSignInLink = "Get Back to Sign In";
 
   ///signup
-  static const signUpWelcome = "Welcome to Cosmoventure";
+  static const signUpWelcome = "Create an Account to Get Started";
+  static const forgotWelcome = "Forgotten Password?";
   static const signUp = "Sign Up";
+  static const forgot = "Reset Password";
   static const uname = "User Name";
   static const cPassword = "Confirm Password";
 
