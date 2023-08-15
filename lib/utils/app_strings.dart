@@ -12,6 +12,13 @@ class AppStrings {
   static const forgotPassword = "Forgot Password ?";
   static const signIn = "Sign In";
   static const signUpLink = "Don’t have an account ? Sign Up";
+  static const signInLink = "Already have an account ? Sign In";
+
+  ///signup
+  static const signUpWelcome = "Welcome to Cosmoventure";
+  static const signUp = "Sign Up";
+  static const uname = "User Name";
+  static const cPassword = "Confirm Password";
 
   ///general
   static const appName = "Cosmoventure";
