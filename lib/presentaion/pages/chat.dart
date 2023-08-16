@@ -224,25 +224,31 @@ class _ChatScreenState extends State<ChatScreen> {
         return Container(
           decoration: BoxDecoration(borderRadius: BorderRadius.circular(10)),
           // Set the desired height of the pop-up
-          height: MediaQuery.of(context).size.height * 0.4,
+          height: MediaQuery.of(context).size.height * 0.7,
+
           child: SingleChildScrollView(
             child: Padding(
               padding: const EdgeInsets.only(left: 16, right: 16),
               child: SingleChildScrollView(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisSize: MainAxisSize.min,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
+                    SizedBox(
+                      height: 20,
+                    ),
                     Icon(
                       Icons.message_rounded,
                       size: 40,
                       color: AppColors.outlineColor,
                     ),
-                    CustomTextField(
-                      color: "white",
-                      textInputAction: TextInputAction.next,
-                      textEditingController: idController,
-                      labelText: AppStrings.id,
+                    Container(
+                      child: CustomTextField(
+                        color: "white",
+                        textInputAction: TextInputAction.next,
+                        textEditingController: idController,
+                        labelText: AppStrings.id,
+                      ),
                     ),
                     SizedBox(
                       height: 30,
@@ -325,7 +331,16 @@ class _ChatScreenState extends State<ChatScreen> {
               GradientButton(
                 isDisabled: false,
                 title: "Chat",
-                onPress: () {},
+                onPress: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => UserChatScreen(
+                        uname: "Tom2",
+                      ),
+                    ),
+                  );
+                },
               ),
             ],
           ),
