@@ -29,6 +29,7 @@ class _BookingsScreenState extends State<BookingsScreen> {
   final TextEditingController departureLocationController =
       TextEditingController();
   String PassengerDropdownValue = '1';
+  String departureDropDownValue = '1:00';
 
   // get selectedValue => null;
   @override
@@ -44,21 +45,21 @@ class _BookingsScreenState extends State<BookingsScreen> {
     return SafeArea(
       child: Column(
         children: [
-          Container(
-            height: 200, // Adjust this height as needed
-            child: const Image(
-              image: AssetImage(AppImages.bookingDetailTopImage),
-              fit: BoxFit.cover, // Adjust the BoxFit as needed
-            ),
-          ),
+          // Container(
+          //   height: 200, // Adjust this height as needed
+          //   child: const Image(
+          //     image: AssetImage(AppImages.bookingMain),
+          //     fit: BoxFit.cover, // Adjust the BoxFit as needed
+          //   ),
+          // ),
           Expanded(
             child: Container(
               width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height / 1.4,
+              height: MediaQuery.of(context).size.height,
               decoration: const BoxDecoration(
                 image: DecorationImage(
-                  image: AssetImage(AppImages.bookingDetailBottomImage),
-                  fit: BoxFit.cover,
+                  image: AssetImage(AppImages.bookingMain),
+                  fit: BoxFit.fill,
                 ),
               ),
               child: Padding(
@@ -68,14 +69,17 @@ class _BookingsScreenState extends State<BookingsScreen> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisSize: MainAxisSize.min,
                     children: [
+                      const SizedBox(
+                        height: 200,
+                      ),
                       Text(
                         AppStrings.bookingTopic,
                         style:
-                            Theme.of(context).textTheme.displayMedium!.copyWith(
+                            Theme.of(context).textTheme.displayLarge!.copyWith(
                                   color: AppColors.bookingTopic,
                                 ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
                       CustomTextField(
@@ -120,11 +124,26 @@ class _BookingsScreenState extends State<BookingsScreen> {
                       const SizedBox(
                         height: 20,
                       ),
-                      CustomTextField(
-                        textInputAction: TextInputAction.next,
-                        textEditingController: departureTimeController,
-                        labelText: AppStrings.departureTime,
-                        lines: 1,
+                      CustomDropDown(
+                        labelText: "Departure Time",
+                        lst: const [
+                          '1:00',
+                          '2:00',
+                          '3:00',
+                          '4:00',
+                          '5:00',
+                          '6:00',
+                          '7:00',
+                          '8:00',
+                          '9:00',
+                          '10:00'
+                        ],
+                        onChanged: (newValue) {
+                          setState(() {
+                            departureDropDownValue = newValue!;
+                          });
+                        },
+                        value: departureDropDownValue,
                       ),
                       const SizedBox(
                         height: 20,
@@ -134,6 +153,7 @@ class _BookingsScreenState extends State<BookingsScreen> {
                         textEditingController: departureLocationController,
                         labelText: AppStrings.departureLocation,
                         lines: 1,
+                        textAlign: TextAlign.center,
                       ),
                       const SizedBox(
                         height: 40,

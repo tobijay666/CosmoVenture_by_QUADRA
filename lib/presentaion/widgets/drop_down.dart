@@ -57,7 +57,7 @@ class _CustomDropDownState extends State<CustomDropDown> {
       children: [
         Text(
           widget.labelText == null ? "" : widget.labelText!,
-          style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+          style: Theme.of(context).textTheme.bodyLarge!.copyWith(
                 color: AppColors.whiteColor,
               ),
         ),
