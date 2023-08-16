@@ -1,3 +1,4 @@
+import 'package:cosmoventure/presentaion/widgets/date_selector.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
@@ -91,39 +92,121 @@ class _BookingsScreenState extends State<BookingsScreen> {
                       const SizedBox(
                         height: 20,
                       ),
-                      CustomDropDown(
-                        labelText: "Passengers",
-                        lst: const [
-                          '1',
-                          '2',
-                          '3',
-                          '4',
-                          '5',
-                          '6',
-                          '7',
-                          '8',
-                          '9',
-                          '10'
+
+                      Row(
+                        children: [
+                          Expanded(
+                            child: CustomDropDown(
+                              labelText: "Adult Passengers",
+                              lst: const [
+                                '1',
+                                '2',
+                                '3',
+                                '4',
+                                '5',
+                                '6',
+                                '7',
+                                '8',
+                                '9',
+                                '10'
+                              ],
+                              onChanged: (newValue) {
+                                setState(() {
+                                  PassengerDropdownValue = newValue!;
+                                });
+                              },
+                              value: PassengerDropdownValue,
+                            ),
+                          ),
+                          const SizedBox(
+                            width: 20,
+                          ),
+                          Expanded(
+                            child: CustomDropDown(
+                              labelText: "Child Passengers",
+                              lst: const [
+                                '1',
+                                '2',
+                                '3',
+                                '4',
+                                '5',
+                                '6',
+                                '7',
+                                '8',
+                                '9',
+                                '10'
+                              ],
+                              onChanged: (newValue) {
+                                setState(() {
+                                  PassengerDropdownValue = newValue!;
+                                });
+                              },
+                              value: PassengerDropdownValue,
+                            ),
+                          ),
                         ],
-                        onChanged: (newValue) {
-                          setState(() {
-                            PassengerDropdownValue = newValue!;
-                          });
-                        },
-                        value: PassengerDropdownValue,
                       ),
+                      // CustomDropDown(
+                      //   labelText: "Passengers",
+                      //   lst: const [
+                      //     '1',
+                      //     '2',
+                      //     '3',
+                      //     '4',
+                      //     '5',
+                      //     '6',
+                      //     '7',
+                      //     '8',
+                      //     '9',
+                      //     '10'
+                      //   ],
+                      //   onChanged: (newValue) {
+                      //     setState(() {
+                      //       PassengerDropdownValue = newValue!;
+                      //     });
+                      //   },
+                      //   value: PassengerDropdownValue,
+                      // ),
                       const SizedBox(
                         height: 20,
                       ),
-                      CustomTextField(
-                        textInputAction: TextInputAction.next,
-                        textEditingController: departureDateController,
-                        labelText: AppStrings.departureDate,
-                        lines: 1,
+                      Row(
+                        children: [
+                          Expanded(
+                            child: CustomDateSelector(
+                              labelText: AppStrings.departureDate,
+                              onDateSelected: (date) {
+                                departureDateController.text =
+                                    date.toString().split(' ')[0];
+                              },
+                            ),
+                          ),
+                          const SizedBox(
+                            width: 20,
+                          ),
+                          Expanded(
+                            child: CustomDateSelector(
+                              labelText: AppStrings.arrivalDate,
+                              onDateSelected: (date) {
+                                departureDateController.text =
+                                    date.toString().split(' ')[0];
+                              },
+                            ),
+                          ),
+                        ],
                       ),
+
+                      // CustomDateSelector(
+                      //   labelText: AppStrings.departureDate,
+                      //   onDateSelected: (date) {
+                      //     departureDateController.text =
+                      //         date.toString().split(' ')[0];
+                      //   },
+                      // ),
                       const SizedBox(
                         height: 20,
                       ),
+
                       CustomDropDown(
                         labelText: "Departure Time",
                         lst: const [

@@ -21,6 +21,8 @@ class AppStrings {
   static const bookingPassengers = "Passengers";
   static const departureDate = "Departure Date";
   static const departureTime = "Departure Time";
+  static const arrivalDate = "Arrival Date";
+  static const arrivalTime = "Arrival Time";
   static const departureLocation = "Departure Location";
 
   ///signup

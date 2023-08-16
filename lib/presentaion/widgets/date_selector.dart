@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 
+import '../../utils/app_colors.dart';
+
 class CustomDateSelector extends StatefulWidget {
+  final String labelText;
+
   final Function(DateTime? selectedDate) onDateSelected;
 
-  CustomDateSelector({required this.onDateSelected});
+  const CustomDateSelector(
+      {super.key, required this.onDateSelected, required this.labelText});
 
   @override
   _CustomDateSelectorState createState() => _CustomDateSelectorState();
@@ -29,12 +34,23 @@ class _CustomDateSelectorState extends State<CustomDateSelector> {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: <Widget>[
-        Expanded(
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          widget.labelText == null ? "" : widget.labelText!,
+          style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                color: AppColors.whiteColor,
+              ),
+        ),
+        const SizedBox(height: 2.0),
+        Container(
+          decoration: BoxDecoration(
+            color: Colors.white, // Set the background color to white
+            borderRadius: BorderRadius.circular(8),
+          ),
           child: ListTile(
-            title: Text("Selected Date:"),
-            subtitle: Text(
+            title: Text(
               "${selectedDate?.toLocal()}".split(' ')[0],
             ),
             trailing: Icon(Icons.keyboard_arrow_down),
@@ -45,5 +61,22 @@ class _CustomDateSelectorState extends State<CustomDateSelector> {
         ),
       ],
     );
+
+    // Row(
+    //   children: <Widget>[
+    //     Expanded(
+    //       child: ListTile(
+    //         title: Text("Selected Date:"),
+    //         subtitle: Text(
+    //           "${selectedDate?.toLocal()}".split(' ')[0],
+    //         ),
+    //         trailing: Icon(Icons.keyboard_arrow_down),
+    //         onTap: () {
+    //           _selectDate(context);
+    //         },
+    //       ),
+    //     ),
+    //   ],
+    // );
   }
 }
