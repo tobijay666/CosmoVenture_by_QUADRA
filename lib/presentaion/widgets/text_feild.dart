@@ -15,15 +15,18 @@ class CustomTextField extends StatefulWidget {
     this.lines,
     this.hintText,
     this.keyboardType,
+    this.color,
   }) : super(key: key);
 
   final String? labelText;
   final bool obscureText;
+  final String? color;
   final TextEditingController textEditingController;
   final TextInputAction? textInputAction;
   final String? initialValue;
   final String? hintText;
   final int? lines;
+
   final TextInputType? keyboardType;
 
   @override
@@ -71,7 +74,9 @@ class _CustomTextFieldState extends State<CustomTextField> {
             ? Text(
                 widget.labelText!,
                 style: Theme.of(context).textTheme.bodyLarge!.copyWith(
-                      color: AppColors.whiteColor,
+                      color: widget.color == null
+                          ? AppColors.whiteColor
+                          : AppColors.black,
                     ),
               )
             : Container(),

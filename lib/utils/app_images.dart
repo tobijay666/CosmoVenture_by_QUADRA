@@ -15,4 +15,5 @@ class AppImages {
   static const String slider3 = 'assets/images/Home_slider3.png';
   static const String popular1 = 'assets/images/Home_slider1.png';
   static const String popular2 = 'assets/images/popular.png';
+  static const String chatImg = 'assets/images/chat_img.png';
 }
