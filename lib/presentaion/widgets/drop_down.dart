@@ -58,40 +58,46 @@ class _CustomDropDownState extends State<CustomDropDown> {
         Text(
           widget.labelText == null ? "" : widget.labelText!,
           style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                color: AppColors.textLabelGreyColor,
+                color: AppColors.whiteColor,
               ),
         ),
         const SizedBox(height: 2.0),
-        DropdownButtonFormField<String>(
-          decoration: InputDecoration(
-            fillColor: AppColors.textFieldFillColor,
-            filled: isFilled,
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(8),
-              borderSide: const BorderSide(
-                color: AppColors.lightGrayColor,
-              ),
-            ),
-            contentPadding:
-                const EdgeInsets.symmetric(vertical: 15, horizontal: 15),
-            focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(8),
-              borderSide: const BorderSide(
-                color: AppColors.primaryColor,
-              ),
-            ),
+        Container(
+          decoration: BoxDecoration(
+            color: Colors.white, // Set the background color to white
+            borderRadius: BorderRadius.circular(8),
           ),
-          isExpanded: true,
-          value: widget.value,
-          elevation: 16,
-          onChanged: widget.onChanged,
-          items: widget.lst.map<DropdownMenuItem<String>>((String value) {
-            return DropdownMenuItem<String>(
-              value: value,
-              child: Text(value),
-            );
-          }).toList(),
-        )
+          child: DropdownButtonFormField<String>(
+            decoration: InputDecoration(
+              fillColor: AppColors.textFieldFillColor,
+              filled: isFilled,
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(8),
+                borderSide: const BorderSide(
+                  color: AppColors.lightGrayColor,
+                ),
+              ),
+              contentPadding:
+                  const EdgeInsets.symmetric(vertical: 15, horizontal: 15),
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(8),
+                borderSide: const BorderSide(
+                  color: AppColors.primaryColor,
+                ),
+              ),
+            ),
+            isExpanded: true,
+            value: widget.value,
+            elevation: 16,
+            onChanged: widget.onChanged,
+            items: widget.lst.map<DropdownMenuItem<String>>((String value) {
+              return DropdownMenuItem<String>(
+                value: value,
+                child: Text(value),
+              );
+            }).toList(),
+          ),
+        ),
       ],
     );
   }

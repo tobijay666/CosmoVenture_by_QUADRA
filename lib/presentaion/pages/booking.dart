@@ -28,6 +28,7 @@ class _BookingsScreenState extends State<BookingsScreen> {
   final TextEditingController ticketNoController = TextEditingController();
   final TextEditingController departureLocationController =
       TextEditingController();
+  String PassengerDropdownValue = '1';
 
   // get selectedValue => null;
   @override
@@ -86,10 +87,26 @@ class _BookingsScreenState extends State<BookingsScreen> {
                       const SizedBox(
                         height: 20,
                       ),
-                      NumberDropdown(
-                        onChanged: (selectedValue) {
-                          print(selectedValue);
+                      CustomDropDown(
+                        labelText: "Passengers",
+                        lst: const [
+                          '1',
+                          '2',
+                          '3',
+                          '4',
+                          '5',
+                          '6',
+                          '7',
+                          '8',
+                          '9',
+                          '10'
+                        ],
+                        onChanged: (newValue) {
+                          setState(() {
+                            PassengerDropdownValue = newValue!;
+                          });
                         },
+                        value: PassengerDropdownValue,
                       ),
                       const SizedBox(
                         height: 20,
