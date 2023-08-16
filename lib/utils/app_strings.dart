@@ -15,6 +15,14 @@ class AppStrings {
   static const signInLink = "Already have an account ? Sign In";
   static const backToSignInLink = "Get Back to Sign In";
 
+  ///booking
+  static const bookingTopic = "Booking Details";
+  static const bookingDestination = "Destination";
+  static const bookingPassengers = "Passengers";
+  static const departureDate = "Departure Date";
+  static const departureTime = "Departure Time";
+  static const departureLocation = "Departure Location";
+
   ///signup
   static const signUpWelcome = "Create an Account to Get Started";
   static const forgotWelcome = "Forgotten Password?";
@@ -29,6 +37,8 @@ class AppStrings {
   static const search = "Search";
   static const settings = "Settings";
   static const discover = "Discover";
+  static const bookingDetails = "Booking Details";
+  static const next = "Next";
 
   ///walkthrough
   static const skip = "Skip";

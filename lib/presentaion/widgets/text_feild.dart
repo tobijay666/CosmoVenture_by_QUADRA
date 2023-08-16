@@ -16,6 +16,7 @@ class CustomTextField extends StatefulWidget {
     this.hintText,
     this.keyboardType,
     this.color,
+    this.textAlign,
   }) : super(key: key);
 
   final String? labelText;
@@ -28,6 +29,7 @@ class CustomTextField extends StatefulWidget {
   final int? lines;
 
   final TextInputType? keyboardType;
+  final TextAlign? textAlign;
 
   @override
   State<CustomTextField> createState() => _CustomTextFieldState();
@@ -96,6 +98,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
             textInputAction: widget.textInputAction,
             focusNode: _focusNode,
             textAlignVertical: TextAlignVertical.center,
+            textAlign: widget.textAlign ?? TextAlign.start,
             obscureText: widget.obscureText && !isVisible,
             maxLines: widget.lines,
             cursorColor: AppColors.black,

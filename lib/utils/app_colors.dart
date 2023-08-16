@@ -18,4 +18,5 @@ class AppColors {
   static const Color disabledButtonFontGreyColor = Color(0xff888888);
   static const Color textFieldFillColor = Color(0xffF0F2F3);
   static const Color appAccentColor = Color(0xffFAB95B);
+  static const Color bookingTopic = Color.fromRGBO(45, 153, 255, 1);
 }

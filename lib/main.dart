@@ -1,3 +1,4 @@
+import 'package:cosmoventure/presentaion/pages/booking.dart';
 import 'package:cosmoventure/presentaion/pages/chat.dart';
 import 'package:cosmoventure/presentaion/pages/discover.dart';
 import 'package:cosmoventure/presentaion/pages/home.dart';
@@ -63,7 +64,7 @@ class MyApp extends StatelessWidget {
             ),
           ),
         ),
-        home: SplashScreen());
+        home: BookingsScreen());
   }
 }
 
@@ -81,7 +82,8 @@ class _MyHomePageState extends State<MyHomePage> {
     SearchScreen(),
     HomeScreen(),
     DiscoverScreen(),
-    SettingScreen()
+    SettingScreen(),
+    BookingsScreen(),
   ];
   final navigationKey = GlobalKey<CurvedNavigationBarState>();
 
