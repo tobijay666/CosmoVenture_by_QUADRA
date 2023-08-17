@@ -7,8 +7,16 @@ import 'gradient_button.dart';
 
 class AutoSliderBanner extends StatefulWidget {
   final List<String> imageUrls;
+  final bool text;
+  List<String>? title;
+  List<String>? description;
 
-  const AutoSliderBanner({super.key, required this.imageUrls});
+  AutoSliderBanner(
+      {super.key,
+      required this.imageUrls,
+      required this.text,
+      this.title,
+      this.description});
 
   @override
   // ignore: library_private_types_in_public_api
@@ -52,21 +60,26 @@ class _AutoSliderBannerState extends State<AutoSliderBanner> {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisSize: MainAxisSize.min,
               children: [
-                Text(
-                  AppStrings.sliderText1,
-                  style: Theme.of(context).textTheme.displaySmall!.copyWith(
-                        color: AppColors.whiteColor,
-                      ),
-                ),
+                widget.text
+                    ? Text(
+                        widget.title![0],
+                        style:
+                            Theme.of(context).textTheme.displaySmall!.copyWith(
+                                  color: AppColors.whiteColor,
+                                ),
+                      )
+                    : Container(),
                 SizedBox(
                   height: 20,
                 ),
-                Text(
-                  AppStrings.sliderText2,
-                  style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                        color: AppColors.whiteColor,
-                      ),
-                ),
+                widget.text
+                    ? Text(
+                        widget.description![0],
+                        style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                              color: AppColors.whiteColor,
+                            ),
+                      )
+                    : Container(),
               ],
             ),
           ),
@@ -76,7 +89,25 @@ class _AutoSliderBannerState extends State<AutoSliderBanner> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisSize: MainAxisSize.min,
-              children: [],
+              children: [
+                widget.text
+                    ? Text(
+                        widget.title![0],
+                        style:
+                            Theme.of(context).textTheme.displaySmall!.copyWith(
+                                  color: AppColors.whiteColor,
+                                ),
+                      )
+                    : Container(),
+                widget.text
+                    ? Text(
+                        widget.description![1],
+                        style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                              color: AppColors.whiteColor,
+                            ),
+                      )
+                    : Container(),
+              ],
             ),
           ),
         if (_currentSlide == 2)
@@ -85,7 +116,25 @@ class _AutoSliderBannerState extends State<AutoSliderBanner> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisSize: MainAxisSize.min,
-              children: [],
+              children: [
+                widget.text
+                    ? Text(
+                        widget.title![2],
+                        style:
+                            Theme.of(context).textTheme.displaySmall!.copyWith(
+                                  color: AppColors.whiteColor,
+                                ),
+                      )
+                    : Container(),
+                widget.text
+                    ? Text(
+                        widget.description![2],
+                        style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                              color: AppColors.whiteColor,
+                            ),
+                      )
+                    : Container(),
+              ],
             ),
           ),
         Positioned(
