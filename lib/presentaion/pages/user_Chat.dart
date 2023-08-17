@@ -1,3 +1,4 @@
+import 'package:cosmoventure/presentaion/widgets/chat_textfield.dart';
 import 'package:cosmoventure/presentaion/widgets/incoming_msg.dart';
 import 'package:cosmoventure/presentaion/widgets/send_msg.dart';
 import 'package:cosmoventure/utils/app_strings.dart';
@@ -17,6 +18,8 @@ class UserChatScreen extends StatefulWidget {
 }
 
 class _UserChatScreenState extends State<UserChatScreen> {
+  final TextEditingController chatController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -54,6 +57,31 @@ class _UserChatScreenState extends State<UserChatScreen> {
             SizedBox(
               height: 20,
             ),
+            SendMsg(),
+            SizedBox(
+              height: 20,
+            ),
+            SendMsg(),
+            SizedBox(
+              height: 20,
+            ),
+            incomingMsg(),
+            SizedBox(
+              height: 20,
+            ),
+            SendMsg(),
+            SizedBox(
+              height: 20,
+            ),
+            SendMsg(),
+            SizedBox(
+              height: 20,
+            ),
+            incomingMsg(),
+            SizedBox(
+              height: 20,
+            ),
+            ChatTextField(textEditingController: chatController)
           ],
         ),
       ),

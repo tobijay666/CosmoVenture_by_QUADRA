@@ -2,9 +2,11 @@ import 'package:cosmoventure/presentaion/pages/booking.dart';
 import 'package:cosmoventure/presentaion/pages/chat.dart';
 import 'package:cosmoventure/presentaion/pages/discover.dart';
 import 'package:cosmoventure/presentaion/pages/home.dart';
+import 'package:cosmoventure/presentaion/pages/profile.dart';
 import 'package:cosmoventure/presentaion/pages/search.dart';
 import 'package:cosmoventure/presentaion/pages/settings.dart';
 import 'package:cosmoventure/presentaion/pages/splash.dart';
+import 'package:cosmoventure/presentaion/pages/user_Chat.dart';
 import 'package:cosmoventure/utils/app_colors.dart';
 import 'package:cosmoventure/utils/app_strings.dart';
 import 'package:flutter/material.dart';
@@ -64,7 +66,7 @@ class MyApp extends StatelessWidget {
             ),
           ),
         ),
-        home: SplashScreen());
+        home: const ProfileScreen());
   }
 }
 

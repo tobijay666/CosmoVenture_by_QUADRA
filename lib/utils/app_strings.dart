@@ -76,4 +76,15 @@ class AppStrings {
   static const transactionDate = "Transaction Date";
   static const transactionAmount = "Transaction Amount";
   static const transactionRecipient = "Recipient";
+
+  // Profile Screen
+  static const profileTopic = "Profile";
+  static const profileUNametxt = "User Name";
+  static const profileUName = "Tom Black";
+  static const profileInterIDtxt = "InterGalactic ID";
+  static const profileInterID = "X452289";
+  static const profileAdresstxt = "Address";
+  static const profileAdress = "Colombo, SL, Earth";
+  static const profileDOBtxt = "Date of Birth";
+  static const profileDOB = "1990-01-01";
 }

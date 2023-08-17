@@ -4,11 +4,15 @@ import '../../utils/app_colors.dart';
 
 class CustomDateSelector extends StatefulWidget {
   final String labelText;
+  final String? initialDate;
 
   final Function(DateTime? selectedDate) onDateSelected;
 
   const CustomDateSelector(
-      {super.key, required this.onDateSelected, required this.labelText});
+      {super.key,
+      required this.onDateSelected,
+      required this.labelText,
+      this.initialDate});
 
   @override
   _CustomDateSelectorState createState() => _CustomDateSelectorState();
@@ -51,7 +55,7 @@ class _CustomDateSelectorState extends State<CustomDateSelector> {
           ),
           child: ListTile(
             title: Text(
-              "${selectedDate?.toLocal()}".split(' ')[0],
+              widget.initialDate ?? "${selectedDate?.toLocal()}".split(' ')[0],
             ),
             trailing: Icon(Icons.keyboard_arrow_down),
             onTap: () {
