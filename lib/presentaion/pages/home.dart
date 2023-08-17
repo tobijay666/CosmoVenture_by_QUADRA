@@ -59,7 +59,18 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
-            const AutoSliderBanner(
+            AutoSliderBanner(
+              text: true,
+              title: [
+                AppStrings.sliderText1,
+                AppStrings.sliderText1,
+                AppStrings.sliderText1
+              ],
+              description: [
+                AppStrings.sliderText2,
+                AppStrings.sliderText2,
+                AppStrings.sliderText2
+              ],
               imageUrls: [
                 AppImages.slider1,
                 AppImages.slider2,

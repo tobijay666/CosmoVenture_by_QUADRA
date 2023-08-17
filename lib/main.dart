@@ -64,7 +64,7 @@ class MyApp extends StatelessWidget {
             ),
           ),
         ),
-        home: BookingsScreen());
+        home: SplashScreen());
   }
 }
 
