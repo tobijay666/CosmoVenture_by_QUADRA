@@ -244,7 +244,14 @@ class _BookingsScreenState extends State<BookingsScreen> {
                       GradientButton(
                         isDisabled: false,
                         title: AppStrings.next,
-                        onPress: () {},
+                        onPress: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => LoginScreen(),
+                            ),
+                          );
+                        },
                       ),
                       const SizedBox(
                         height: 8,
