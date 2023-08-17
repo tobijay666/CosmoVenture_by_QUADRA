@@ -19,4 +19,5 @@ class AppColors {
   static const Color textFieldFillColor = Color(0xffF0F2F3);
   static const Color appAccentColor = Color(0xffFAB95B);
   static const Color bookingTopic = Color.fromRGBO(45, 153, 255, 1);
+  static const Color transactionColor = Color.fromRGBO(255, 222, 33, 1);
 }

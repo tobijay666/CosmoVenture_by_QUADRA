@@ -21,4 +21,5 @@ class AppImages {
   static const String bookingDetailTopImage = 'assets/images/bookingTop.png';
   static const String bookingDetailBottomImage =
       'assets/images/bookingBottom.png';
+  static const String transactionMain = 'assets/images/transaction_screen.png';
 }

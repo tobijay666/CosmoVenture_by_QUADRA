@@ -69,4 +69,11 @@ class AppStrings {
   static const paymentType2 = "Ethereum";
   static const paymentType3 = "Dogecoin";
   static const paymentType4 = "Litecoin";
+
+  // Transactions Screen
+  static const transactionTopic = "Transaction History";
+  static const transactionID = "Transaction ID";
+  static const transactionDate = "Transaction Date";
+  static const transactionAmount = "Transaction Amount";
+  static const transactionRecipient = "Recipient";
 }

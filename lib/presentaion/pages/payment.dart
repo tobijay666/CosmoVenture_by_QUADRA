@@ -1,3 +1,4 @@
+import 'package:cosmoventure/presentaion/pages/transaction.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -125,7 +126,7 @@ class _PaymentPortalState extends State<PaymentPortal> {
                                   .textTheme
                                   .displayLarge!
                                   .copyWith(
-                                    color: AppColors.whiteColor,
+                                    color: AppColors.greyColor,
                                   ),
                             ),
                           ),
@@ -143,7 +144,7 @@ class _PaymentPortalState extends State<PaymentPortal> {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => const LoginScreen(),
+                                builder: (context) => const TransactionScreen(),
                               ),
                             );
                           },
