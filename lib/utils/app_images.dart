@@ -17,6 +17,7 @@ class AppImages {
   static const String popular2 = 'assets/images/popular.png';
   static const String chatImg = 'assets/images/chat_img.png';
   static const String bookingMain = 'assets/images/booking_main.png';
+  static const String paymentportalMain = 'assets/images/payment_portal.png';
   static const String bookingDetailTopImage = 'assets/images/bookingTop.png';
   static const String bookingDetailBottomImage =
       'assets/images/bookingBottom.png';

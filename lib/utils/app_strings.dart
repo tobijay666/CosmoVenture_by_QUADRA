@@ -58,4 +58,15 @@ class AppStrings {
       "Mars, often called the 'Red Planet', has been a target for space travel due to its .Mars's radius is second smallest among the planets in the Solar System at 3,389.5 km.";
   static const venusDescription =
       "Venus is the second planet from the Sun and is Earth's closest planetary neighbor.It is a rocky planet with the densest atmosphere of all the rocky bodies in the Solar System";
+
+  //payment portal
+  static const paymentPortalTopic = "Payment Portal";
+  static const paymentMethod = "Payment Method";
+  static const bookingID = "Booking ID";
+  static const bookingName = "Booking Name";
+  static const paymentAmount = "Total:";
+  static const paymentType1 = "Bitcoin";
+  static const paymentType2 = "Ethereum";
+  static const paymentType3 = "Dogecoin";
+  static const paymentType4 = "Litecoin";
 }

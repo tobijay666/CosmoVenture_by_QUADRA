@@ -1,3 +1,4 @@
+import 'package:cosmoventure/presentaion/pages/payment.dart';
 import 'package:cosmoventure/presentaion/widgets/date_selector.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -46,13 +47,6 @@ class _BookingsScreenState extends State<BookingsScreen> {
     return SafeArea(
       child: Column(
         children: [
-          // Container(
-          //   height: 200, // Adjust this height as needed
-          //   child: const Image(
-          //     image: AssetImage(AppImages.bookingMain),
-          //     fit: BoxFit.cover, // Adjust the BoxFit as needed
-          //   ),
-          // ),
           Expanded(
             child: Container(
               width: MediaQuery.of(context).size.width,
@@ -92,7 +86,6 @@ class _BookingsScreenState extends State<BookingsScreen> {
                       const SizedBox(
                         height: 20,
                       ),
-
                       Row(
                         children: [
                           Expanded(
@@ -146,27 +139,6 @@ class _BookingsScreenState extends State<BookingsScreen> {
                           ),
                         ],
                       ),
-                      // CustomDropDown(
-                      //   labelText: "Passengers",
-                      //   lst: const [
-                      //     '1',
-                      //     '2',
-                      //     '3',
-                      //     '4',
-                      //     '5',
-                      //     '6',
-                      //     '7',
-                      //     '8',
-                      //     '9',
-                      //     '10'
-                      //   ],
-                      //   onChanged: (newValue) {
-                      //     setState(() {
-                      //       PassengerDropdownValue = newValue!;
-                      //     });
-                      //   },
-                      //   value: PassengerDropdownValue,
-                      // ),
                       const SizedBox(
                         height: 20,
                       ),
@@ -195,18 +167,9 @@ class _BookingsScreenState extends State<BookingsScreen> {
                           ),
                         ],
                       ),
-
-                      // CustomDateSelector(
-                      //   labelText: AppStrings.departureDate,
-                      //   onDateSelected: (date) {
-                      //     departureDateController.text =
-                      //         date.toString().split(' ')[0];
-                      //   },
-                      // ),
                       const SizedBox(
                         height: 20,
                       ),
-
                       CustomDropDown(
                         labelText: "Departure Time",
                         lst: const [
@@ -241,17 +204,20 @@ class _BookingsScreenState extends State<BookingsScreen> {
                       const SizedBox(
                         height: 40,
                       ),
-                      GradientButton(
-                        isDisabled: false,
-                        title: AppStrings.next,
-                        onPress: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => LoginScreen(),
-                            ),
-                          );
-                        },
+                      Padding(
+                        padding: const EdgeInsets.only(left: 70, right: 70),
+                        child: GradientButton(
+                          isDisabled: false,
+                          title: AppStrings.next,
+                          onPress: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const PaymentPortal(),
+                              ),
+                            );
+                          },
+                        ),
                       ),
                       const SizedBox(
                         height: 8,
