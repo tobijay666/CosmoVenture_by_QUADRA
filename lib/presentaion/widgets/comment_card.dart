@@ -68,6 +68,36 @@ class CommentsCard extends StatelessWidget {
                     ),
                   ],
                 ),
+                SizedBox(
+                  height: 5,
+                ),
+                Row(
+                  children: [
+                    Icon(
+                      Icons.thumb_up_outlined,
+                      color: AppColors.whiteColor,
+                    ),
+                    Text(
+                      "200",
+                      style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                            color: AppColors.whiteColor,
+                          ),
+                    ),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Icon(
+                      Icons.thumb_down_outlined,
+                      color: AppColors.whiteColor,
+                    ),
+                    Text(
+                      "20",
+                      style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                            color: AppColors.whiteColor,
+                          ),
+                    ),
+                  ],
+                ),
               ],
             ),
           )
