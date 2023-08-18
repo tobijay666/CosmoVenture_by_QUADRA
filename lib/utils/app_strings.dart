@@ -47,10 +47,14 @@ class AppStrings {
 
   ///home
   static const sliderText1 = "Discover New Experiences By Exploring Space";
+  static const sliderSubText2 =
+      "Stay connected to the latest advancements in space technology as you monitor satellites in real-time, gaining a deeper understanding of Earth's orbital wonders";
+  static const sliderSubText3 =
+      "Unleash your inner astronaut and traverse the cosmos like never before, with our Space Travel App's captivating virtual tours and breathtaking imagery";
   static const seeAll = "See All";
   static const popularDestinations = "Popular Destinations";
   static const upcomingJourneys = "Upcoming Journeys";
-  static const sliderText2 =
+  static const sliderSubText1 =
       "We were one of the first companies in the world to accept tours to space with multiple destinations in them";
   static const mars = "Mars";
   static const venus = "Venus";

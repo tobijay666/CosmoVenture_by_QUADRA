@@ -37,7 +37,6 @@ class _AutoSliderBannerState extends State<AutoSliderBanner> {
                     url,
                     fit: BoxFit.cover,
                     width: double.infinity,
-                    height: 150,
                   ))
               .toList(),
           carouselController: _controller,
@@ -75,8 +74,9 @@ class _AutoSliderBannerState extends State<AutoSliderBanner> {
                 widget.text
                     ? Text(
                         widget.description![0],
-                        style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                        style: Theme.of(context).textTheme.bodyLarge!.copyWith(
                               color: AppColors.whiteColor,
+                              fontWeight: FontWeight.bold,
                             ),
                       )
                     : Container(),
@@ -92,7 +92,7 @@ class _AutoSliderBannerState extends State<AutoSliderBanner> {
               children: [
                 widget.text
                     ? Text(
-                        widget.title![0],
+                        widget.title![1],
                         style:
                             Theme.of(context).textTheme.displaySmall!.copyWith(
                                   color: AppColors.whiteColor,
@@ -102,9 +102,9 @@ class _AutoSliderBannerState extends State<AutoSliderBanner> {
                 widget.text
                     ? Text(
                         widget.description![1],
-                        style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                              color: AppColors.whiteColor,
-                            ),
+                        style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                            color: AppColors.whiteColor,
+                            fontWeight: FontWeight.bold),
                       )
                     : Container(),
               ],
@@ -120,18 +120,20 @@ class _AutoSliderBannerState extends State<AutoSliderBanner> {
                 widget.text
                     ? Text(
                         widget.title![2],
-                        style:
-                            Theme.of(context).textTheme.displaySmall!.copyWith(
-                                  color: AppColors.whiteColor,
-                                ),
+                        style: Theme.of(context)
+                            .textTheme
+                            .displaySmall!
+                            .copyWith(
+                                color: AppColors.whiteColor,
+                                fontWeight: FontWeight.bold),
                       )
                     : Container(),
                 widget.text
                     ? Text(
                         widget.description![2],
-                        style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                              color: AppColors.whiteColor,
-                            ),
+                        style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                            color: AppColors.whiteColor,
+                            fontWeight: FontWeight.bold),
                       )
                     : Container(),
               ],
