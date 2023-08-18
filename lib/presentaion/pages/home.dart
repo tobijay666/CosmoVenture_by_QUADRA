@@ -61,15 +61,11 @@ class _HomeScreenState extends State<HomeScreen> {
           children: <Widget>[
             AutoSliderBanner(
               text: true,
-              title: [
-                AppStrings.sliderText1,
-                AppStrings.sliderText1,
-                AppStrings.sliderText1
-              ],
+              title: [AppStrings.sliderText1, "", ""],
               description: [
-                AppStrings.sliderText2,
-                AppStrings.sliderText2,
-                AppStrings.sliderText2
+                AppStrings.sliderSubText1,
+                AppStrings.sliderSubText2,
+                AppStrings.sliderSubText3
               ],
               imageUrls: [
                 AppImages.slider1,

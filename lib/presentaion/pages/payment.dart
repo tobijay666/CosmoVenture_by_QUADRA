@@ -1,3 +1,4 @@
+import 'package:cosmoventure/presentaion/pages/booking_Confirmation.dart';
 import 'package:cosmoventure/presentaion/pages/transaction.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -144,7 +145,8 @@ class _PaymentPortalState extends State<PaymentPortal> {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => const TransactionScreen(),
+                                builder: (context) =>
+                                    const BookingConfirmedScreen(),
                               ),
                             );
                           },
@@ -164,6 +166,25 @@ class _PaymentPortalState extends State<PaymentPortal> {
           ),
         ],
       ),
+    );
+  }
+
+  void _showBookingConfirmedContainer(BuildContext context) {
+    showModalBottomSheet(
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(
+          top: Radius.circular(25.0),
+        ),
+      ),
+      context: context,
+      isScrollControlled: true,
+      builder: (BuildContext context) {
+        return Container(
+            height: MediaQuery.of(context).size.height,
+            child: SingleChildScrollView(
+              child: Text("Sdsdfsa"),
+            ));
+      },
     );
   }
 }

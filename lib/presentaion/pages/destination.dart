@@ -1,3 +1,4 @@
+import 'package:cosmoventure/presentaion/pages/booking.dart';
 import 'package:cosmoventure/presentaion/pages/user_Comments.dart';
 import 'package:cosmoventure/presentaion/widgets/comment_card.dart';
 import 'package:flutter/material.dart';
@@ -463,8 +464,41 @@ class _DestinationScreenState extends State<DestinationScreen> {
               ),
             ),
             SizedBox(
-              height: 40,
+              height: 20,
             ),
+            Padding(
+              padding: const EdgeInsets.all(16),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "Price 500 BTC",
+                    style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                          color: Colors.yellow,
+                        ),
+                  ),
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(primary: Colors.yellow),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => BookingsScreen(),
+                        ),
+                      );
+                    },
+                    child: Text(
+                      "Book Now",
+                      style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                          color: Colors.black, fontWeight: FontWeight.bold),
+                    ),
+                  )
+                ],
+              ),
+            ),
+            SizedBox(
+              height: 20,
+            )
           ],
         ),
       ),
