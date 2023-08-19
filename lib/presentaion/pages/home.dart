@@ -135,6 +135,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             context,
                             MaterialPageRoute(
                               builder: (context) => DestinationScreen(
+                                uid: widget.uid!,
                                 rating: popularCards[index].rating,
                                 title: popularCards[index].title,
                                 age: popularCards[index].age,

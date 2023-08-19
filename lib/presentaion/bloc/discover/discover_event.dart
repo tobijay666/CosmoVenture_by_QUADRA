@@ -6,3 +6,5 @@ abstract class DiscoverEvent extends Equatable {
   @override
   List<Object> get props => [];
 }
+
+class DiscoverLoading extends DiscoverEvent {}

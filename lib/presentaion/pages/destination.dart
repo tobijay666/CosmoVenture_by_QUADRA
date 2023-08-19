@@ -12,6 +12,7 @@ import '../widgets/auto_slider.dart';
 import '../widgets/discover_card.dart';
 
 class DestinationScreen extends StatefulWidget {
+  final String? uid;
   final String? title;
   final String? description;
   final List<String>? image;
@@ -43,7 +44,8 @@ class DestinationScreen extends StatefulWidget {
       this.distance,
       this.hTemp,
       this.cTemp,
-      this.lTemp});
+      this.lTemp,
+      this.uid});
 
   @override
   State<DestinationScreen> createState() => _DestinationScreenState();
@@ -483,7 +485,7 @@ class _DestinationScreenState extends State<DestinationScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    "Price 500 BTC",
+                    "Price " + widget.price! + " BTC",
                     style: Theme.of(context).textTheme.bodyLarge!.copyWith(
                           color: Colors.yellow,
                         ),
@@ -494,7 +496,11 @@ class _DestinationScreenState extends State<DestinationScreen> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => BookingsScreen(),
+                          builder: (context) => BookingsScreen(
+                            destination: widget.title,
+                            uid: widget.uid!,
+                            price: widget.price!,
+                          ),
                         ),
                       );
                     },

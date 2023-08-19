@@ -6,3 +6,7 @@ abstract class BookingConfirmationEvent extends Equatable {
   @override
   List<Object> get props => [];
 }
+
+class BookingConfirmationLoading extends BookingConfirmationEvent {}
+
+class BookingConfirmationComplete extends BookingConfirmationEvent {}

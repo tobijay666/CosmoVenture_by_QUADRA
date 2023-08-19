@@ -1,26 +1,41 @@
+import 'package:cosmoventure/presentaion/bloc/payment/payment_bloc.dart';
 import 'package:cosmoventure/presentaion/pages/booking_Confirmation.dart';
 import 'package:cosmoventure/presentaion/pages/transaction.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../dependency_injection.dart';
 import '../../utils/app_colors.dart';
 import '../../utils/app_images.dart';
 import '../../utils/app_strings.dart';
 import '../widgets/drop_down.dart';
 import '../widgets/gradient_button.dart';
+import '../widgets/message_dialog.dart';
 import '../widgets/text_feild.dart';
 import 'login.dart';
 
 class PaymentPortal extends StatefulWidget {
-  const PaymentPortal({super.key});
+  final String? bookingId;
+  final String? uid;
+
+  const PaymentPortal({super.key, this.bookingId, this.uid});
 
   @override
   State<PaymentPortal> createState() => _PaymentPortalState();
 }
 
 class _PaymentPortalState extends State<PaymentPortal> {
+  late String? bookingName;
+  late String? price;
+  late String? date;
+  late String? time;
+  late num? count;
+
+  final PaymentBloc bloc = sl<PaymentBloc>();
+  bool isLoading = false;
   final TextEditingController bookingIdController = TextEditingController();
   final TextEditingController bookingNameController = TextEditingController();
   String paymentMethodValue = AppStrings.paymentType1;
@@ -29,7 +44,79 @@ class _PaymentPortalState extends State<PaymentPortal> {
   Widget build(BuildContext context) {
     final double h = MediaQuery.of(context).size.height;
     return Scaffold(
-      body: _bodyWidget(),
+      body: BlocProvider(
+        create: (_) => bloc..add(PaymentLoading(bookingId: widget.bookingId!)),
+        child: BlocConsumer<PaymentBloc, PaymentState>(
+          builder: (context, state) {
+            if (state is PaymentLoaded) {
+              bookingName = state.bookingEntity?.destination!;
+              count = state.bookingEntity?.passengerCount!;
+              price = state.bookingEntity?.price!;
+              date = state.bookingEntity?.date!;
+              time = state.bookingEntity?.time!;
+              time = state.bookingEntity?.time!;
+              return _bodyWidget();
+            }
+            if (state is PaymentError) {
+              return _bodyWidget();
+            }
+            if (state is PaymentSuccess) {
+              return _bodyWidget();
+            }
+            if (state is PaymentConfirmation) {
+              return BookingConfirmedScreen(
+                uid: widget.uid,
+                bookingId: widget.bookingId,
+                count: count!,
+                price: (count! * int.parse(price!)).toString(),
+                time: time,
+                departure: date,
+              );
+            }
+
+            return const Scaffold(
+              backgroundColor: AppColors.black,
+              body: Center(
+                child: CircularProgressIndicator(
+                  backgroundColor: AppColors.outlineColor,
+                ),
+              ),
+            );
+          },
+          listener: (context, state) {
+            if (state is PaymentError) {
+              setState(() {
+                isLoading = false;
+              });
+
+              MessageDialog dialog = MessageDialog(context,
+                  title: state.errorTitle,
+                  buttonTitle: AppStrings.tryAgain,
+                  imagePath: AppImages.errorImage,
+                  description: state.errorDesc, onPress: () {
+                Navigator.pop(context);
+                bloc.add(PaymentLoading(bookingId: widget.bookingId!));
+              });
+              dialog.show();
+            }
+            if (state is PaymentSuccess) {
+              setState(() {
+                isLoading = false;
+              });
+
+              MessageDialog dialog = MessageDialog(context,
+                  title: state.successTitle,
+                  buttonTitle: AppStrings.ok,
+                  imagePath: AppImages.successImage,
+                  description: state.successDesc, onPress: () {
+                Navigator.pop(context);
+                bloc.add(PaymentMade());
+              });
+              dialog.show();
+            }
+          },
+        ),
+      ),
       backgroundColor: Colors.black,
     );
   }
@@ -68,20 +155,42 @@ class _PaymentPortalState extends State<PaymentPortal> {
                       const SizedBox(
                         height: 20,
                       ),
-                      CustomTextField(
-                        textInputAction: TextInputAction.next,
-                        textEditingController: bookingIdController,
-                        labelText: AppStrings.bookingID,
-                        textAlign: TextAlign.center,
+                      Container(
+                        height: 50,
+                        width: double.infinity,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: Center(
+                          child: Text(
+                            widget.bookingId!,
+                            style:
+                                Theme.of(context).textTheme.bodyLarge!.copyWith(
+                                      color: Colors.black,
+                                    ),
+                          ),
+                        ),
                       ),
                       const SizedBox(
                         height: 20,
                       ),
-                      CustomTextField(
-                        textInputAction: TextInputAction.next,
-                        textEditingController: bookingNameController,
-                        labelText: AppStrings.bookingName,
-                        textAlign: TextAlign.center,
+                      Container(
+                        height: 50,
+                        width: double.infinity,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: Center(
+                          child: Text(
+                            bookingName!,
+                            style:
+                                Theme.of(context).textTheme.bodyLarge!.copyWith(
+                                      color: Colors.black,
+                                    ),
+                          ),
+                        ),
                       ),
                       const SizedBox(
                         height: 20,
@@ -121,14 +230,17 @@ class _PaymentPortalState extends State<PaymentPortal> {
                             width: 20,
                           ),
                           Expanded(
-                            child: Text(
-                              "AppStrings.paymentAmount",
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .displayLarge!
-                                  .copyWith(
-                                    color: AppColors.greyColor,
-                                  ),
+                            child: Align(
+                              alignment: Alignment.topRight,
+                              child: Text(
+                                (count! * int.parse(price!)).toString(),
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .displayLarge!
+                                    .copyWith(
+                                      color: AppColors.whiteColor,
+                                    ),
+                              ),
                             ),
                           ),
                         ],
@@ -142,13 +254,18 @@ class _PaymentPortalState extends State<PaymentPortal> {
                           isDisabled: false,
                           title: AppStrings.next,
                           onPress: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) =>
-                                    const BookingConfirmedScreen(),
-                              ),
-                            );
+                            // Navigator.push(
+                            //   context,
+                            //   MaterialPageRoute(
+                            //     builder: (context) =>
+                            //         const BookingConfirmedScreen(),
+                            //   ),
+                            // );
+                            bloc.add(PaymentMake(
+                                price: (count! * int.parse(price!)).toString(),
+                                destination: bookingName!,
+                                paymentType: paymentMethodValue,
+                                bookingId: widget.bookingId!));
                           },
                         ),
                       ),

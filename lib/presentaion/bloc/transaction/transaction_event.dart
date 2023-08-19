@@ -1,10 +1,10 @@
 part of 'transaction_bloc.dart';
 
-abstract class TransactionState extends Equatable {
-  const TransactionState();
+abstract class TransactionEvent extends Equatable {
+  const TransactionEvent();
 
   @override
   List<Object> get props => [];
 }
 
-class TransactionInitial extends TransactionState {}
+class TransactionLoading extends TransactionEvent {}

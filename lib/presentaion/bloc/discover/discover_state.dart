@@ -8,3 +8,9 @@ abstract class DiscoverState extends Equatable {
 }
 
 class DiscoverInitial extends DiscoverState {}
+
+class DiscoverLoaded extends DiscoverState {
+  final List<DestinationEntity>? destinationCards;
+
+  const DiscoverLoaded({this.destinationCards});
+}

@@ -1,24 +1,63 @@
+import 'package:cosmoventure/main.dart';
+import 'package:cosmoventure/presentaion/bloc/booking_confirmation/booking_confirmation_bloc.dart';
 import 'package:cosmoventure/presentaion/pages/home.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../dependency_injection.dart';
 import '../../utils/app_colors.dart';
 
 class BookingConfirmedScreen extends StatefulWidget {
+  final String? bookingId;
   final String? uid;
-  const BookingConfirmedScreen({super.key, this.uid});
+  final String? price;
+  final num? count;
+  final String? departure;
+  final String? time;
+  const BookingConfirmedScreen(
+      {super.key,
+      this.uid,
+      this.bookingId,
+      this.count,
+      this.price,
+      this.departure,
+      this.time});
 
   @override
   State<BookingConfirmedScreen> createState() => _BookingConfirmedScreenState();
 }
 
 class _BookingConfirmedScreenState extends State<BookingConfirmedScreen> {
+  final BookingConfirmationBloc bloc = sl<BookingConfirmationBloc>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black.withOpacity(0.9),
-      body: _bodyWidget(),
+      body: BlocProvider(
+        create: (_) => bloc..add(BookingConfirmationLoading()),
+        child: BlocConsumer<BookingConfirmationBloc, BookingConfirmationState>(
+          builder: (context, state) {
+            if (state is BookingConfirmationLoaded) {
+              return _bodyWidget();
+            }
+            if (state is BookingConfirmationSuccess) {
+              return MyHomePage(index: 2, uid: widget.uid!);
+            }
+
+            return const Scaffold(
+              backgroundColor: AppColors.black,
+              body: Center(
+                child: CircularProgressIndicator(
+                  backgroundColor: AppColors.outlineColor,
+                ),
+              ),
+            );
+          },
+          listener: (context, state) {},
+        ),
+      ),
     );
   }
 
@@ -34,10 +73,11 @@ class _BookingConfirmedScreenState extends State<BookingConfirmedScreen> {
                   alignment: Alignment.topRight,
                   child: InkWell(
                     onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => HomeScreen()),
-                      );
+                      // Navigator.push(
+                      //   context,
+                      //   MaterialPageRoute(builder: (context) => HomeScreen()),
+                      // );
+                      bloc.add(BookingConfirmationComplete());
                     },
                     child: Icon(
                       Icons.close,
@@ -92,7 +132,7 @@ class _BookingConfirmedScreenState extends State<BookingConfirmedScreen> {
                                   ),
                         ),
                         Text(
-                          "Booking Id : NG 2434532523",
+                          "Booking Id : " + widget.bookingId!,
                           style:
                               Theme.of(context).textTheme.bodyLarge!.copyWith(
                                     color: Colors.black,
@@ -125,7 +165,7 @@ class _BookingConfirmedScreenState extends State<BookingConfirmedScreen> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(left: 16),
+                padding: const EdgeInsets.only(left: 16, right: 16),
                 child: Container(
                   width: MediaQuery.of(context).size.width,
                   decoration: BoxDecoration(
@@ -176,24 +216,7 @@ class _BookingConfirmedScreenState extends State<BookingConfirmedScreen> {
                                             Column(
                                               children: [
                                                 Text(
-                                                  "2 Adults",
-                                                  style: Theme.of(context)
-                                                      .textTheme
-                                                      .bodyLarge!
-                                                      .copyWith(
-                                                          color: Colors.white,
-                                                          fontWeight:
-                                                              FontWeight.bold),
-                                                ),
-                                              ],
-                                            ),
-                                            SizedBox(
-                                              width: 5,
-                                            ),
-                                            Column(
-                                              children: [
-                                                Text(
-                                                  "1 Child",
+                                                  widget.count.toString(),
                                                   style: Theme.of(context)
                                                       .textTheme
                                                       .bodyLarge!
@@ -256,7 +279,7 @@ class _BookingConfirmedScreenState extends State<BookingConfirmedScreen> {
                                             Column(
                                               children: [
                                                 Text(
-                                                  "17/2/2013",
+                                                  widget.departure!,
                                                   style: Theme.of(context)
                                                       .textTheme
                                                       .bodyLarge!
@@ -273,7 +296,7 @@ class _BookingConfirmedScreenState extends State<BookingConfirmedScreen> {
                                             Column(
                                               children: [
                                                 Text(
-                                                  "-7.00 PM",
+                                                  " - " + widget.time!,
                                                   style: Theme.of(context)
                                                       .textTheme
                                                       .bodyLarge!
@@ -338,7 +361,7 @@ class _BookingConfirmedScreenState extends State<BookingConfirmedScreen> {
                                   ),
                             ),
                             Text(
-                              "500BTC",
+                              widget.price! + " BTC",
                               style: Theme.of(context)
                                   .textTheme
                                   .bodyLarge!

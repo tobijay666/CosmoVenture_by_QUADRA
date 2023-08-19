@@ -8,3 +8,7 @@ abstract class BookingConfirmationState extends Equatable {
 }
 
 class BookingConfirmationInitial extends BookingConfirmationState {}
+
+class BookingConfirmationLoaded extends BookingConfirmationState {}
+
+class BookingConfirmationSuccess extends BookingConfirmationState {}

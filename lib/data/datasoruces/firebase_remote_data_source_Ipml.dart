@@ -1,8 +1,10 @@
 import 'dart:convert';
 import 'dart:io';
 import 'package:cosmoventure/data/models/user_model.dart';
+import 'package:cosmoventure/domain/entities/booking_entity.dart';
 import 'package:cosmoventure/domain/entities/destination_entity.dart';
 import 'package:cosmoventure/domain/entities/journey_entity%20copy.dart';
+import 'package:cosmoventure/domain/entities/payment_entity.dart';
 import 'package:cosmoventure/domain/entities/user_entity.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_bcrypt/flutter_bcrypt.dart';
@@ -144,6 +146,72 @@ class FirebaseRemoteDataSourceImpl implements FirebaseRemoteDataSource {
           image: doc.get('image'),
         );
       }).toList();
+    } catch (e) {
+      throw Exception('Failed to get user details: $e');
+    }
+  }
+
+  @override
+  Future<String> addBooking(BookingEntity bookingEntity) async {
+    try {
+      final bookingDocRef = firestore.collection('bookings').doc();
+      final documentId = bookingDocRef.id;
+      await bookingDocRef.set(
+        {
+          "id": bookingEntity.id,
+          "time": bookingEntity.time,
+          "arrival": bookingEntity.arrival,
+          "date": bookingEntity.date,
+          "departure": bookingEntity.departure,
+          "passengerCount": bookingEntity.passengerCount,
+          "destination": bookingEntity.destination,
+          "price": bookingEntity.price,
+        },
+      );
+      return documentId;
+    } catch (e) {
+      throw Exception('Failed to get user details: $e');
+    }
+  }
+
+  @override
+  Future<BookingEntity> getBookingDetails(String uid) async {
+    try {
+      final bookingDocRef = firestore.collection('bookings').doc(uid);
+      final bookingDocSnapshot = await bookingDocRef.get();
+
+      if (bookingDocSnapshot.exists) {
+        return BookingEntity(
+          destination: bookingDocSnapshot.get('destination'),
+          passengerCount: bookingDocSnapshot.get('passengerCount'),
+          arrival: bookingDocSnapshot.get('arrival'),
+          time: bookingDocSnapshot.get('time'),
+          date: bookingDocSnapshot.get('date'),
+          departure: bookingDocSnapshot.get('departure'),
+          price: bookingDocSnapshot.get('price'),
+        );
+      } else {
+        throw Exception('User not found.');
+      }
+    } catch (e) {
+      throw Exception('Failed to get user details: $e');
+    }
+  }
+
+  @override
+  Future<String> addPayment(PaymentEntity paymentEntity) async {
+    try {
+      final paymentDocRef = firestore.collection('payments').doc();
+      final documentId = paymentDocRef.id;
+      await paymentDocRef.set(
+        {
+          "bookingId": paymentEntity.bookingId,
+          "paymentType": paymentEntity.paymentType,
+          "destination": paymentEntity.destination,
+          "price": paymentEntity.price,
+        },
+      );
+      return documentId;
     } catch (e) {
       throw Exception('Failed to get user details: $e');
     }
