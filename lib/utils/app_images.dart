@@ -25,4 +25,6 @@ class AppImages {
       'assets/images/bookingBottom.png';
   static const String transactionMain = 'assets/images/transaction_screen.png';
   static const String profileScreen = 'assets/images/profile_screen.png';
+  static const String errorImage = 'assets/images/error_image.svg';
+  static const String successImage = 'assets/images/success_image.svg';
 }

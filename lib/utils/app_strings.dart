@@ -91,4 +91,10 @@ class AppStrings {
   static const profileAdress = "Colombo, SL, Earth";
   static const profileDOBtxt = "Date of Birth";
   static const profileDOB = "1990-01-01";
+
+  //alert
+  static const tryAgain = "Try Again";
+  static const ok = "Ok";
+  static const emptyFieldsErrorTitle = "Empty Fields";
+  static const emptyFields = "Input fields can't be empty";
 }

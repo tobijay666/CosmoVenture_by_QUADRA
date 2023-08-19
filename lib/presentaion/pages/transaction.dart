@@ -21,6 +21,10 @@ class _TransactionScreenState extends State<TransactionScreen> {
   Widget build(BuildContext context) {
     final double h = MediaQuery.of(context).size.height;
     return Scaffold(
+      appBar: AppBar(
+        automaticallyImplyLeading: true,
+        backgroundColor: Colors.black,
+      ),
       body: _bodyWidget(),
       backgroundColor: Colors.black,
     );

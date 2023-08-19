@@ -1,3 +1,4 @@
+import 'package:cosmoventure/presentaion/pages/profile.dart';
 import 'package:cosmoventure/presentaion/pages/splash.dart';
 import 'package:cosmoventure/presentaion/pages/transaction.dart';
 import 'package:flutter/material.dart';
@@ -130,34 +131,42 @@ class _SettingScreenState extends State<SettingScreen> {
               },
               child: Padding(
                 padding: const EdgeInsets.only(left: 16, right: 16),
-                child: Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(12.0),
-                    color: AppColors.black,
-                    boxShadow: [
-                      BoxShadow(
-                        color: AppColors.outlineColor.withOpacity(0.5),
-                        spreadRadius: 1,
-                        blurRadius: 3,
-                        offset: const Offset(0, 3),
+                child: InkWell(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => ProfileScreen()));
+                  },
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(12.0),
+                      color: AppColors.black,
+                      boxShadow: [
+                        BoxShadow(
+                          color: AppColors.outlineColor.withOpacity(0.5),
+                          spreadRadius: 1,
+                          blurRadius: 3,
+                          offset: const Offset(0, 3),
+                        ),
+                      ],
+                    ),
+                    child: ListTile(
+                      leading: Icon(
+                        Icons.person,
+                        color: AppColors.whiteColor,
                       ),
-                    ],
-                  ),
-                  child: ListTile(
-                    leading: Icon(
-                      Icons.person,
-                      color: AppColors.whiteColor,
-                    ),
-                    trailing: Icon(
-                      Icons.arrow_forward_ios,
-                      color: AppColors.whiteColor,
-                    ),
-                    title: Text(
-                      'Edit Profile',
-                      style: Theme.of(context).textTheme.bodyLarge!.copyWith(
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white,
-                          ),
+                      trailing: Icon(
+                        Icons.arrow_forward_ios,
+                        color: AppColors.whiteColor,
+                      ),
+                      title: Text(
+                        'Edit Profile',
+                        style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white,
+                            ),
+                      ),
                     ),
                   ),
                 ),

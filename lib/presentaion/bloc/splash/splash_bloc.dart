@@ -6,6 +6,10 @@ part 'splash_state.dart';
 
 class SplashBloc extends Bloc<SplashEvent, SplashState> {
   SplashBloc() : super(SplashInitial()) {
-    on<SplashEvent>((event, emit) {});
+    on<SplashLoading>(_onSplashLoading);
+  }
+
+  _onSplashLoading(SplashLoading event, Emitter<SplashState> emit) async {
+    emit(SplashLoaded());
   }
 }

@@ -1,12 +1,15 @@
 import 'package:cosmoventure/main.dart';
+import 'package:cosmoventure/presentaion/bloc/splash/splash_bloc.dart';
 import 'package:cosmoventure/presentaion/pages/login.dart';
 import 'package:cosmoventure/utils/app_images.dart';
 import 'package:cosmoventure/utils/app_strings.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:swipe_to/swipe_to.dart';
 
+import '../../dependency_injection.dart';
 import '../../utils/app_colors.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -17,16 +20,39 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+  final SplashBloc bloc = sl<SplashBloc>();
+  bool isLoading = false;
   @override
   Widget build(BuildContext context) {
-    return _bodyWidget();
+    return Scaffold(
+      body: BlocProvider(
+        create: (_) => bloc..add(SplashLoading()),
+        child: BlocConsumer<SplashBloc, SplashState>(
+          builder: (context, state) {
+            if (state is SplashLoaded) {
+              return _bodyWidget();
+            }
+
+            return const Scaffold(
+              backgroundColor: AppColors.black,
+              body: Center(
+                child: CircularProgressIndicator(
+                  backgroundColor: AppColors.outlineColor,
+                ),
+              ),
+            );
+          },
+          listener: (context, state) {},
+        ),
+      ),
+      backgroundColor: Colors.black,
+    );
   }
 
   _bodyWidget() {
     return SafeArea(
-      child: Scaffold(
-        backgroundColor: Colors.black,
-        body: Column(
+      child: SingleChildScrollView(
+        child: Column(
           children: [
             Image(image: AssetImage(AppImages.splashImage)),
             Padding(

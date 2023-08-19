@@ -51,25 +51,63 @@ class _ProfileScreenState extends State<ProfileScreen> {
               decoration: const BoxDecoration(
                 image: DecorationImage(
                   image: AssetImage(AppImages.profileScreen),
-                  fit: BoxFit.fill,
+                  fit: BoxFit.cover,
                 ),
               ),
               child: Padding(
                 padding: const EdgeInsets.only(left: 20, right: 20),
                 child: SingleChildScrollView(
                   child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      const SizedBox(
-                        height: 200,
+                      SizedBox(
+                        height: 25,
                       ),
-                      Text(
-                        AppStrings.profileTopic,
-                        style:
-                            Theme.of(context).textTheme.displayLarge!.copyWith(
-                                  color: AppColors.bookingTopic,
+                      Stack(
+                        children: [
+                          CircleAvatar(
+                            radius: 70,
+                            backgroundImage:
+                                NetworkImage('https://i.pravatar.cc/300'),
+                          ),
+                          Positioned(
+                            bottom: 0,
+                            right: 0,
+                            child: InkWell(
+                              onTap: () {
+                                //getImage();
+                              },
+                              child: Container(
+                                padding: const EdgeInsets.all(10),
+                                decoration: const BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  color: AppColors.outlineColor,
                                 ),
+                                child: const Icon(
+                                  size: 30,
+                                  Icons.camera_alt,
+                                  color: AppColors.whiteColor,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 50,
+                      ),
+                      Align(
+                        alignment: Alignment.topLeft,
+                        child: Text(
+                          AppStrings.profileTopic,
+                          style: Theme.of(context)
+                              .textTheme
+                              .displayLarge!
+                              .copyWith(
+                                color: AppColors.bookingTopic,
+                              ),
+                        ),
                       ),
                       const SizedBox(
                         height: 20,

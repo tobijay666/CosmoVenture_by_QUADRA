@@ -9,11 +9,20 @@ import 'package:cosmoventure/presentaion/pages/splash.dart';
 import 'package:cosmoventure/presentaion/pages/user_Chat.dart';
 import 'package:cosmoventure/utils/app_colors.dart';
 import 'package:cosmoventure/utils/app_strings.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
+import 'firebase_options.dart';
+import 'dependency_injection.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+  await setupLocator();
+
   runApp(const MyApp());
 }
 
@@ -66,7 +75,7 @@ class MyApp extends StatelessWidget {
             ),
           ),
         ),
-        home: const ProfileScreen());
+        home: SplashScreen());
   }
 }
 

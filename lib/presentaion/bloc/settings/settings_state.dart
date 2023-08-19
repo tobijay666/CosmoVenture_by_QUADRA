@@ -1,7 +1,7 @@
 part of 'settings_bloc.dart';
 
-abstract class SettingsEvent extends Equatable {
-  const SettingsEvent();
+abstract class SettingsState extends Equatable {
+  const SettingsState();
 
   @override
   List<Object> get props => [];

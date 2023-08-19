@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>911460844037-om0o92do6vhkt64mfi1eer3dne6lhf5q.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.911460844037-om0o92do6vhkt64mfi1eer3dne6lhf5q</string>
+	<key>API_KEY</key>
+	<string>AIzaSyD-vdrcGvORlrPmRhAM6_Bw9SR6aHslSNQ</string>
+	<key>GCM_SENDER_ID</key>
+	<string>911460844037</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.cosmoventure</string>
+	<key>PROJECT_ID</key>
+	<string>quadramadestan-ade52</string>
+	<key>STORAGE_BUCKET</key>
+	<string>quadramadestan-ade52.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:911460844037:ios:6989a7e6913c7dcb19126c</string>
+</dict>
+</plist>

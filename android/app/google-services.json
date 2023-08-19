@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "911460844037",
+    "project_id": "quadramadestan-ade52",
+    "storage_bucket": "quadramadestan-ade52.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:911460844037:android:39ce2d488caf6af019126c",
+        "android_client_info": {
+          "package_name": "com.example.cosmoventure"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "911460844037-ksgtv2mgdiio5aekueijovguuclk8vnk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDJVQBRzFgVikrMxdkN43eaCy5mZjfDoGs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "911460844037-ksgtv2mgdiio5aekueijovguuclk8vnk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
