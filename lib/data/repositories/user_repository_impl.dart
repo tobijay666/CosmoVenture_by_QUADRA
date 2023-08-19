@@ -11,5 +11,13 @@ class UserRepositoryImpl extends UserRepository {
   Future<void> signUp(UserEntity user) async => remoteDataSource.signUp(user);
 
   @override
-  Future<void> signIn(UserEntity user) async => remoteDataSource.signIn(user);
+  Future<String> signIn(UserEntity user) async => remoteDataSource.signIn(user);
+
+  @override
+  Future<String> getCurrentUserUid() async =>
+      remoteDataSource.getCurrentUserUid();
+
+  @override
+  Future<UserEntity> getUserDetails(String uid) async =>
+      remoteDataSource.getUserDetails(uid);
 }

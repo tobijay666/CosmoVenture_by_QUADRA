@@ -14,7 +14,8 @@ import '../widgets/feature_card.dart';
 import '../widgets/feature_slider_card.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+  final String? uid;
+  const HomeScreen({super.key, this.uid});
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -104,6 +105,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   MaterialPageRoute(
                       builder: (context) => MyHomePage(
                             index: 3,
+                            uid: widget.uid!,
                           )),
                 );
               },

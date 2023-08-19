@@ -6,7 +6,8 @@ import 'package:flutter/src/widgets/placeholder.dart';
 import '../../utils/app_colors.dart';
 
 class BookingConfirmedScreen extends StatefulWidget {
-  const BookingConfirmedScreen({super.key});
+  final String? uid;
+  const BookingConfirmedScreen({super.key, this.uid});
 
   @override
   State<BookingConfirmedScreen> createState() => _BookingConfirmedScreenState();

@@ -10,7 +10,8 @@ import '../../utils/app_strings.dart';
 import '../widgets/gradient_button.dart';
 
 class WalkThroughScreen extends StatefulWidget {
-  const WalkThroughScreen({super.key});
+  final String? uid;
+  const WalkThroughScreen({super.key, this.uid});
 
   @override
   State<WalkThroughScreen> createState() => _WalkThroughScreenState();
@@ -100,6 +101,7 @@ class _WalkThroughScreenState extends State<WalkThroughScreen> {
                             MaterialPageRoute(
                               builder: (context) => MyHomePage(
                                 index: 2,
+                                uid: widget.uid!,
                               ),
                             ));
                       },

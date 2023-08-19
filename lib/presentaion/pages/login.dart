@@ -16,6 +16,7 @@ import '../widgets/dialog_spinner.dart';
 import '../widgets/gradient_button.dart';
 import '../widgets/message_dialog.dart';
 import '../widgets/text_feild.dart';
+import '../widgets/user.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -42,7 +43,8 @@ class _LoginScreenState extends State<LoginScreen> {
               return _bodyWidget();
             }
             if (state is LoginSuccess) {
-              return MyHomePage(index: 2);
+              print(state.id);
+              return MyHomePage(index: 2, uid: state.id!);
             }
 
             if (state is LoginError) {
@@ -65,7 +67,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
               MessageDialog dialog = MessageDialog(context,
                   title: state.errorTitle,
-                  buttonTitle: AppStrings.ok,
+                  buttonTitle: AppStrings.tryAgain,
                   imagePath: AppImages.errorImage,
                   description: state.errorDesc, onPress: () {
                 Navigator.pop(context);
@@ -80,7 +82,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
               MessageDialog dialog = MessageDialog(context,
                   title: state.successTitle,
-                  buttonTitle: AppStrings.tryAgain,
+                  buttonTitle: AppStrings.ok,
                   imagePath: AppImages.successImage,
                   description: state.successDesc, onPress: () {
                 Navigator.pop(context);

@@ -1,23 +1,29 @@
+import 'package:cosmoventure/presentaion/bloc/settings/settings_bloc.dart';
 import 'package:cosmoventure/presentaion/pages/profile.dart';
 import 'package:cosmoventure/presentaion/pages/splash.dart';
 import 'package:cosmoventure/presentaion/pages/transaction.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../dependency_injection.dart';
 import '../../utils/app_colors.dart';
 import '../../utils/app_images.dart';
 import '../../utils/app_strings.dart';
 import '../widgets/comment_card.dart';
 
 class SettingScreen extends StatefulWidget {
-  const SettingScreen({super.key});
+  final String uid;
+  const SettingScreen({super.key, required this.uid});
 
   @override
   State<SettingScreen> createState() => _SettingScreenState();
 }
 
 class _SettingScreenState extends State<SettingScreen> {
+  final SettingsBloc bloc = sl<SettingsBloc>();
+  bool isLoading = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,11 +39,29 @@ class _SettingScreenState extends State<SettingScreen> {
               ),
         ),
       ),
-      body: _bodyWidget(),
+      body: BlocProvider(
+        create: (_) => bloc..add(SettingsLoading(uid: widget.uid)),
+        child: BlocConsumer<SettingsBloc, SettingsState>(
+          builder: (context, state) {
+            if (state is SettingsLoaded) {
+              return _bodyWidget(state.user.name!);
+            }
+            return const Scaffold(
+              backgroundColor: AppColors.black,
+              body: Center(
+                child: CircularProgressIndicator(
+                  backgroundColor: AppColors.outlineColor,
+                ),
+              ),
+            );
+          },
+          listener: (context, state) {},
+        ),
+      ),
     );
   }
 
-  _bodyWidget() {
+  _bodyWidget(String name) {
     return SafeArea(
       child: SingleChildScrollView(
         child: Column(
@@ -58,7 +82,7 @@ class _SettingScreenState extends State<SettingScreen> {
                     width: 10,
                   ),
                   Text(
-                    'Welcome Tom',
+                    'Welcome $name',
                     style: Theme.of(context).textTheme.displayLarge!.copyWith(
                           fontWeight: FontWeight.bold,
                           color: Colors.white,

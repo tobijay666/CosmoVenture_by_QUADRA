@@ -11,7 +11,8 @@ import '../../utils/app_colors.dart';
 import '../../utils/app_strings.dart';
 
 class SearchScreen extends StatefulWidget {
-  const SearchScreen({super.key});
+  final String uid;
+  const SearchScreen({super.key, required this.uid});
 
   @override
   State<SearchScreen> createState() => _SearchScreenState();

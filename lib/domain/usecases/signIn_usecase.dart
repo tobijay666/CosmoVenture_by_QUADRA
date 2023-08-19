@@ -7,7 +7,7 @@ class SignInUseCase {
   final UserRepository repository;
   SignInUseCase({required this.repository});
 
-  Future<void> call(UserEntity user) async {
+  Future<String> call(UserEntity user) async {
     return repository.signIn(user);
   }
 }

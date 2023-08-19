@@ -28,8 +28,8 @@ class UserModel extends UserEntity {
       name: documentSnapshot.get('name'),
       iId: documentSnapshot.get('iId'),
       address: documentSnapshot.get('address'),
-      gender: documentSnapshot.get('gender'),
-      image: documentSnapshot.get('image'),
+      // gender: documentSnapshot.get('gender'),
+      // image: documentSnapshot.get('image'),
     );
   }
 

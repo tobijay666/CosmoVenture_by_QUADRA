@@ -11,7 +11,8 @@ import '../widgets/feature_card.dart';
 import '../widgets/feature_slider_card.dart';
 
 class DiscoverScreen extends StatefulWidget {
-  const DiscoverScreen({super.key});
+  final String? uid;
+  const DiscoverScreen({super.key, this.uid});
 
   @override
   State<DiscoverScreen> createState() => _DiscoverScreenState();

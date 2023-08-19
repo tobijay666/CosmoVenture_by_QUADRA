@@ -7,4 +7,8 @@ abstract class SettingsEvent extends Equatable {
   List<Object> get props => [];
 }
 
-class SettingsInitial extends SettingsState {}
+class SettingsLoading extends SettingsEvent {
+  final String uid;
+
+  const SettingsLoading({required this.uid});
+}

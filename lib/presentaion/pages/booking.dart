@@ -13,7 +13,8 @@ import '../widgets/text_feild.dart';
 import 'login.dart';
 
 class BookingsScreen extends StatefulWidget {
-  const BookingsScreen({super.key});
+  final String? uid;
+  const BookingsScreen({super.key, this.uid});
 
   @override
   State<BookingsScreen> createState() => _BookingsScreenState();

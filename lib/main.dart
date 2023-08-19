@@ -7,12 +7,14 @@ import 'package:cosmoventure/presentaion/pages/search.dart';
 import 'package:cosmoventure/presentaion/pages/settings.dart';
 import 'package:cosmoventure/presentaion/pages/splash.dart';
 import 'package:cosmoventure/presentaion/pages/user_Chat.dart';
+import 'package:cosmoventure/presentaion/widgets/user.dart';
 import 'package:cosmoventure/utils/app_colors.dart';
 import 'package:cosmoventure/utils/app_strings.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
+import 'package:provider/provider.dart';
 import 'firebase_options.dart';
 import 'dependency_injection.dart';
 
@@ -81,21 +83,29 @@ class MyApp extends StatelessWidget {
 
 class MyHomePage extends StatefulWidget {
   late int index;
-  MyHomePage({Key? key, required this.index}) : super(key: key);
+  final String uid;
+  MyHomePage({Key? key, required this.index, required this.uid})
+      : super(key: key);
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final screens = const [
-    ChatScreen(),
-    SearchScreen(),
-    HomeScreen(),
-    DiscoverScreen(),
-    SettingScreen(),
-    BookingsScreen(),
-  ];
+  late List<Widget> screens;
+  @override
+  void initState() {
+    super.initState();
+    screens = [
+      ChatScreen(uid: widget.uid),
+      SearchScreen(uid: widget.uid),
+      HomeScreen(uid: widget.uid),
+      DiscoverScreen(uid: widget.uid),
+      SettingScreen(uid: widget.uid),
+      BookingsScreen(uid: widget.uid),
+    ];
+  }
+
   final navigationKey = GlobalKey<CurvedNavigationBarState>();
 
   @override

@@ -6,3 +6,10 @@ abstract class SettingsState extends Equatable {
   @override
   List<Object> get props => [];
 }
+
+class SettingsInitial extends SettingsState {}
+
+class SettingsLoaded extends SettingsState {
+  final UserEntity user;
+  const SettingsLoaded({required this.user});
+}

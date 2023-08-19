@@ -12,7 +12,8 @@ import '../widgets/gradient_button.dart';
 import '../widgets/text_feild.dart';
 
 class ChatScreen extends StatefulWidget {
-  const ChatScreen({super.key});
+  final String? uid;
+  const ChatScreen({super.key, this.uid});
 
   @override
   State<ChatScreen> createState() => _ChatScreenState();

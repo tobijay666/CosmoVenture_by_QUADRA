@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
 import 'package:cosmoventure/data/models/user_model.dart';
+import 'package:cosmoventure/domain/entities/destination_entity.dart';
 import 'package:cosmoventure/domain/entities/user_entity.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_bcrypt/flutter_bcrypt.dart';
@@ -48,7 +49,7 @@ class FirebaseRemoteDataSourceImpl implements FirebaseRemoteDataSource {
   }
 
   @override
-  Future<void> signIn(UserEntity user) async {
+  Future<String> signIn(UserEntity user) async {
     try {
       final userDocRef = firestore.collection('users').doc(user.iId);
       final userDocSnapshot = await userDocRef.get();
@@ -65,6 +66,7 @@ class FirebaseRemoteDataSourceImpl implements FirebaseRemoteDataSource {
         if (isPasswordMatch) {
           // Password matches, user is authenticated.
           print('User authenticated successfully.');
+          return user.iId!;
         } else {
           throw Exception('Incorrect password.');
         }
@@ -74,5 +76,40 @@ class FirebaseRemoteDataSourceImpl implements FirebaseRemoteDataSource {
     } catch (e) {
       throw Exception('Failed to sign in: $e');
     }
+  }
+
+  @override
+  Future<UserEntity> getUserDetails(String uid) async {
+    try {
+      final userDocRef = firestore.collection('users').doc("100");
+      final userDocSnapshot = await userDocRef.get();
+
+      if (userDocSnapshot.exists) {
+        return UserModel.formSnapshot(userDocSnapshot);
+      } else {
+        throw Exception('User not found.');
+      }
+    } catch (e) {
+      throw Exception('Failed to get user details: $e');
+    }
+  }
+
+  @override
+  Future<String> getCurrentUserUid() {
+    // TODO: implement getCurrentUserUid
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<List<DestinationEntity>> getDestinationCards() async {
+    QuerySnapshot snapshot =
+        await firestore.collection('PredefineModels').get();
+    return snapshot.docs.map((doc) {
+      return DestinationEntity(
+        title: doc.get('title'),
+        description: doc.get('description'),
+        image: doc.get('image'),
+      );
+    }).toList();
   }
 }

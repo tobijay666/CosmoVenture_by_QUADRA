@@ -36,8 +36,9 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
         final user = UserEntity(
             iId: event.iId.trim().toString(),
             password: event.password.trim().toString());
-        await signInUseCase?.call(user);
+        String? uid = await signInUseCase?.call(user);
         emit(LoginSuccess(
+          id: uid,
           successTitle: "Logged In",
           successDesc: "Your have been successfully logged in to your account",
         ));

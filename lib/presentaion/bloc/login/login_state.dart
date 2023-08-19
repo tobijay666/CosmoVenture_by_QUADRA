@@ -12,7 +12,8 @@ class LoginInitial extends LoginState {}
 class LoginSuccess extends LoginState {
   final String successTitle;
   final String? successDesc;
-  const LoginSuccess({required this.successTitle, this.successDesc});
+  final String? id;
+  const LoginSuccess({required this.successTitle, this.successDesc, this.id});
 }
 
 class LoginError extends LoginState {
