@@ -1,4 +1,5 @@
 import 'package:cosmoventure/domain/entities/destination_entity.dart';
+import 'package:cosmoventure/domain/entities/journey_entity%20copy.dart';
 import 'package:cosmoventure/domain/repositories/destination_repository.dart';
 
 import '../datasoruces/firebase_remote_data_source_impl.dart';
@@ -11,4 +12,8 @@ class DestinationRepositoryImpl extends DestinationRepository {
   @override
   Future<List<DestinationEntity>> getDestinationCards() async =>
       remoteDataSource.getDestinationCards();
+
+  @override
+  Future<List<JourneyEntity>> getJourneyCards() async =>
+      remoteDataSource.getJourneyCards();
 }

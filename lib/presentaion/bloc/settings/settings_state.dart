@@ -9,6 +9,8 @@ abstract class SettingsState extends Equatable {
 
 class SettingsInitial extends SettingsState {}
 
+class Logout extends SettingsState {}
+
 class SettingsLoaded extends SettingsState {
   final UserEntity user;
   const SettingsLoaded({required this.user});

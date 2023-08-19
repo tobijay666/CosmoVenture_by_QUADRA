@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:cosmoventure/data/models/user_model.dart';
 import 'package:cosmoventure/domain/entities/destination_entity.dart';
+import 'package:cosmoventure/domain/entities/journey_entity%20copy.dart';
 import 'package:cosmoventure/domain/entities/user_entity.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_bcrypt/flutter_bcrypt.dart';
@@ -102,14 +103,49 @@ class FirebaseRemoteDataSourceImpl implements FirebaseRemoteDataSource {
 
   @override
   Future<List<DestinationEntity>> getDestinationCards() async {
-    QuerySnapshot snapshot =
-        await firestore.collection('PredefineModels').get();
-    return snapshot.docs.map((doc) {
-      return DestinationEntity(
-        title: doc.get('title'),
-        description: doc.get('description'),
-        image: doc.get('image'),
-      );
-    }).toList();
+    try {
+      QuerySnapshot snapshot = await firestore.collection('destinations').get();
+      return snapshot.docs.map((doc) {
+        List<String>? imageList = List<String>.from(doc.get('image'));
+        return DestinationEntity(
+          title: doc.get('title'),
+          description: doc.get('description'),
+          image: imageList,
+          price: doc.get('price'),
+          rating: doc.get('rating'),
+          age: doc.get('age'),
+          density: doc.get('density'),
+          gravity: doc.get('gravity'),
+          oxygen: doc.get('oxygen'),
+          magnitude: doc.get('magnitude'),
+          distance: doc.get('distance'),
+          coordinates: doc.get('coordinates'),
+          hTemp: doc.get('highest_temp'),
+          lTemp: doc.get('lowest_temp'),
+          cTemp: doc.get('current_temp'),
+        );
+      }).toList();
+    } catch (e) {
+      throw Exception('Failed to get user details: $e');
+    }
+  }
+
+  @override
+  Future<List<JourneyEntity>> getJourneyCards() async {
+    try {
+      QuerySnapshot snapshot = await firestore.collection('journeys').get();
+
+      return snapshot.docs.map((doc) {
+        DateTime dateTime = doc.get('time').toDate();
+        return JourneyEntity(
+          title: doc.get('title'),
+          time: dateTime,
+          venue: doc.get('venue'),
+          image: doc.get('image'),
+        );
+      }).toList();
+    } catch (e) {
+      throw Exception('Failed to get user details: $e');
+    }
   }
 }

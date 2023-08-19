@@ -19,7 +19,8 @@ import '../widgets/text_feild.dart';
 import '../widgets/user.dart';
 
 class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+  final String? uid;
+  const LoginScreen({super.key, this.uid});
 
   @override
   State<LoginScreen> createState() => _LoginScreenState();

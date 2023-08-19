@@ -12,3 +12,5 @@ class SettingsLoading extends SettingsEvent {
 
   const SettingsLoading({required this.uid});
 }
+
+class LogoutEvent extends SettingsEvent {}

@@ -9,4 +9,8 @@ abstract class HomeState extends Equatable {
 
 class HomeInitial extends HomeState {}
 
-class HomeLoaded extends HomeState {}
+class HomeLoaded extends HomeState {
+  final List<DestinationEntity>? destinationCards;
+  final List<JourneyEntity>? journeyCards;
+  const HomeLoaded({this.journeyCards, this.destinationCards});
+}

@@ -94,7 +94,7 @@ class _DiscoverScreenState extends State<DiscoverScreen>
                           MaterialPageRoute(
                               builder: (context) => DestinationScreen(
                                     title: AppStrings.mars,
-                                    rating: "4.3",
+                                    rating: 4,
                                   )));
                     },
                     child: DiscoverCard(

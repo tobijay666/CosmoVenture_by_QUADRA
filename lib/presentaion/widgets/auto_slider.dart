@@ -10,13 +10,15 @@ class AutoSliderBanner extends StatefulWidget {
   final bool text;
   List<String>? title;
   List<String>? description;
+  final bool network;
 
   AutoSliderBanner(
       {super.key,
       required this.imageUrls,
       required this.text,
       this.title,
-      this.description});
+      this.description,
+      required this.network});
 
   @override
   // ignore: library_private_types_in_public_api
@@ -32,13 +34,21 @@ class _AutoSliderBannerState extends State<AutoSliderBanner> {
     return Stack(
       children: [
         CarouselSlider(
-          items: widget.imageUrls
-              .map((url) => Image.asset(
-                    url,
-                    fit: BoxFit.cover,
-                    width: double.infinity,
-                  ))
-              .toList(),
+          items: widget.network
+              ? widget.imageUrls
+                  .map((url) => Image.network(
+                        url,
+                        fit: BoxFit.cover,
+                        width: double.infinity,
+                      ))
+                  .toList()
+              : widget.imageUrls
+                  .map((url) => Image.asset(
+                        url,
+                        fit: BoxFit.cover,
+                        width: double.infinity,
+                      ))
+                  .toList(),
           carouselController: _controller,
           options: CarouselOptions(
             height: MediaQuery.of(context).size.height * 0.4,

@@ -12,9 +12,38 @@ import '../widgets/auto_slider.dart';
 import '../widgets/discover_card.dart';
 
 class DestinationScreen extends StatefulWidget {
-  final String title;
-  final String rating;
-  DestinationScreen({super.key, required this.title, required this.rating});
+  final String? title;
+  final String? description;
+  final List<String>? image;
+  final String? price;
+  final String? coordinates;
+  final num? rating;
+  final num? age;
+  final num? density;
+  final num? gravity;
+  final num? magnitude;
+  final num? oxygen;
+  final num? distance;
+  final num? hTemp;
+  final num? cTemp;
+  final num? lTemp;
+  DestinationScreen(
+      {super.key,
+      this.title,
+      this.rating,
+      this.description,
+      this.image,
+      this.price,
+      this.coordinates,
+      this.age,
+      this.density,
+      this.gravity,
+      this.magnitude,
+      this.oxygen,
+      this.distance,
+      this.hTemp,
+      this.cTemp,
+      this.lTemp});
 
   @override
   State<DestinationScreen> createState() => _DestinationScreenState();
@@ -48,18 +77,19 @@ class _DestinationScreenState extends State<DestinationScreen> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
             AutoSliderBanner(
+              network: true,
               text: false,
               imageUrls: [
-                AppImages.slider1,
-                AppImages.slider2,
-                AppImages.slider3,
+                widget.image![0],
+                widget.image![1],
+                widget.image![2],
               ],
             ),
             const SizedBox(height: 20.0),
             Padding(
               padding: const EdgeInsets.only(left: 16),
               child: Text(
-                widget.title,
+                widget.title!,
                 style: Theme.of(context).textTheme.bodyLarge!.copyWith(
                       fontWeight: FontWeight.bold,
                       color: Colors.white,
@@ -74,7 +104,7 @@ class _DestinationScreenState extends State<DestinationScreen> {
                   Column(
                     children: [
                       Text(
-                        widget.rating,
+                        widget.rating.toString() + ".0",
                         style: Theme.of(context).textTheme.bodyLarge!.copyWith(
                               color: Colors.white,
                               fontWeight: FontWeight.bold,
@@ -85,29 +115,8 @@ class _DestinationScreenState extends State<DestinationScreen> {
                   Column(
                     children: [
                       Row(
-                        children: const [
-                          Icon(
-                            Icons.star_rounded,
-                            color: Colors.yellow,
-                          ),
-                          Icon(
-                            Icons.star_rounded,
-                            color: Colors.yellow,
-                          ),
-                          Icon(
-                            Icons.star_rounded,
-                            color: Colors.yellow,
-                          ),
-                          Icon(
-                            Icons.star_rounded,
-                            color: Colors.yellow,
-                          ),
-                          Icon(
-                            Icons.star_outline,
-                            color: Colors.white,
-                          ),
-                        ],
-                      ),
+                          children:
+                              generateRatingIcons(widget.rating!.toInt(), 5)),
                     ],
                   ),
                 ],
@@ -128,7 +137,7 @@ class _DestinationScreenState extends State<DestinationScreen> {
                             color: Colors.red,
                           ),
                           Text(
-                            "70 f",
+                            widget.hTemp!.toString() + " f",
                             style:
                                 Theme.of(context).textTheme.bodyLarge!.copyWith(
                                       color: Colors.red,
@@ -150,7 +159,7 @@ class _DestinationScreenState extends State<DestinationScreen> {
                             width: 5,
                           ),
                           Text(
-                            "-255 f",
+                            widget.lTemp!.toString() + " f",
                             style:
                                 Theme.of(context).textTheme.bodyLarge!.copyWith(
                                       color: AppColors.outlineColor,
@@ -172,7 +181,7 @@ class _DestinationScreenState extends State<DestinationScreen> {
                               color: AppColors.outlineColor,
                             ),
                             Text(
-                              "32 f",
+                              widget.cTemp!.toString() + " f",
                               style: Theme.of(context)
                                   .textTheme
                                   .bodyLarge!
@@ -215,7 +224,7 @@ class _DestinationScreenState extends State<DestinationScreen> {
                             width: 10,
                           ),
                           Text(
-                            "23",
+                            widget.age!.toString(),
                             style:
                                 Theme.of(context).textTheme.bodyLarge!.copyWith(
                                       color: AppColors.whiteColor,
@@ -239,7 +248,7 @@ class _DestinationScreenState extends State<DestinationScreen> {
                             width: 10,
                           ),
                           Text(
-                            "3.93 g/cm³",
+                            widget.density!.toString() + " g/cm³",
                             style:
                                 Theme.of(context).textTheme.bodyLarge!.copyWith(
                                       color: AppColors.whiteColor,
@@ -263,7 +272,7 @@ class _DestinationScreenState extends State<DestinationScreen> {
                             width: 10,
                           ),
                           Text(
-                            "4.6 million km",
+                            widget.distance!.toString() + " million km",
                             style:
                                 Theme.of(context).textTheme.bodyLarge!.copyWith(
                                       color: AppColors.whiteColor,
@@ -287,7 +296,7 @@ class _DestinationScreenState extends State<DestinationScreen> {
                             width: 10,
                           ),
                           Text(
-                            "43.71 m/s²",
+                            widget.gravity!.toString() + " m/s²",
                             style:
                                 Theme.of(context).textTheme.bodyLarge!.copyWith(
                                       color: AppColors.whiteColor,
@@ -311,7 +320,7 @@ class _DestinationScreenState extends State<DestinationScreen> {
                             width: 10,
                           ),
                           Text(
-                            "-2.91",
+                            widget.magnitude!.toString(),
                             style:
                                 Theme.of(context).textTheme.bodyLarge!.copyWith(
                                       color: AppColors.whiteColor,
@@ -335,7 +344,7 @@ class _DestinationScreenState extends State<DestinationScreen> {
                             width: 10,
                           ),
                           Text(
-                            "0.2%",
+                            widget.oxygen!.toString() + "%",
                             style:
                                 Theme.of(context).textTheme.bodyLarge!.copyWith(
                                       color: AppColors.whiteColor,
@@ -359,7 +368,7 @@ class _DestinationScreenState extends State<DestinationScreen> {
                             width: 10,
                           ),
                           Text(
-                            "RA 11h 26m 49s | Dec +4° 27′ 48",
+                            widget.coordinates!,
                             style:
                                 Theme.of(context).textTheme.bodyLarge!.copyWith(
                                       color: AppColors.whiteColor,
@@ -378,7 +387,7 @@ class _DestinationScreenState extends State<DestinationScreen> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  "Mars is the fourth planet and the furthest terrestrial planet from the Sun. ",
+                                  widget.description!.substring(0, 40),
                                   style: Theme.of(context)
                                       .textTheme
                                       .bodyLarge!
@@ -388,7 +397,9 @@ class _DestinationScreenState extends State<DestinationScreen> {
                                 ),
                                 if (showFullText)
                                   Text(
-                                    "The reddish color of its surface is due to finely grained iron(III) oxide dust in the soil, giving it the nickname 'the Red Planet'. Mars's radius is second smallest among the planets in the Solar System at 3,389.5 km.",
+                                    widget.description!.substring(
+                                      40,
+                                    ),
                                     style: Theme.of(context)
                                         .textTheme
                                         .bodyLarge!
@@ -503,5 +514,30 @@ class _DestinationScreenState extends State<DestinationScreen> {
         ),
       ),
     );
+  }
+
+  // Function to generate rating icons dynamically
+  List<Widget> generateRatingIcons(int rating, int maxRating) {
+    List<Widget> icons = [];
+
+    for (int i = 0; i < rating; i++) {
+      icons.add(
+        Icon(
+          Icons.star_rounded,
+          color: Colors.yellow,
+        ),
+      );
+    }
+
+    for (int i = rating; i < maxRating; i++) {
+      icons.add(
+        Icon(
+          Icons.star_outline,
+          color: Colors.white,
+        ),
+      );
+    }
+
+    return icons;
   }
 }

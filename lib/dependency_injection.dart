@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cosmoventure/data/repositories/destination_repository_impl.dart';
 import 'package:cosmoventure/domain/repositories/destination_repository.dart';
 import 'package:cosmoventure/domain/usecases/get_user_details.dart';
+import 'package:cosmoventure/presentaion/bloc/home/home_bloc.dart';
 import 'package:cosmoventure/presentaion/bloc/login/login_bloc.dart';
 import 'package:cosmoventure/presentaion/bloc/register/register_bloc.dart';
 import 'package:cosmoventure/presentaion/bloc/settings/settings_bloc.dart';
@@ -16,6 +17,7 @@ import 'data/datasoruces/firebase_remote_data_source_impl.dart';
 import 'data/repositories/user_repository_impl.dart';
 import 'domain/repositories/user_repository.dart';
 import 'domain/usecases/get_destination_usecase.dart';
+import 'domain/usecases/get_journey_usecase copy.dart';
 import 'domain/usecases/signIn_usecase.dart';
 import 'domain/usecases/signUp_usecase.dart';
 
@@ -29,6 +31,8 @@ Future<void> setupLocator() async {
   sl.registerFactory<RegisterBloc>(
       () => RegisterBloc(signUpUseCase: sl.call()));
   sl.registerFactory<SplashBloc>(() => SplashBloc());
+  sl.registerFactory<HomeBloc>(() =>
+      HomeBloc(getDestinationUseCase: sl.call(), getJourneyUseCase: sl.call()));
   sl.registerFactory<SettingsBloc>(
       () => SettingsBloc(getUserDetailsUseCase: sl.call()));
 
@@ -43,6 +47,8 @@ Future<void> setupLocator() async {
       () => GetUserDetailsUseCase(repository: sl.call()));
   sl.registerLazySingleton<GetDestinationUseCase>(
       () => GetDestinationUseCase(repository: sl.call()));
+  sl.registerLazySingleton<GetJourneyUseCase>(
+      () => GetJourneyUseCase(repository: sl.call()));
 
   /// repository
   //auth

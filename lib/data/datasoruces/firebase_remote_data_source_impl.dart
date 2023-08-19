@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import '../../domain/entities/destination_entity.dart';
+import '../../domain/entities/journey_entity copy.dart';
 import '../../domain/entities/user_entity.dart';
 
 abstract class FirebaseRemoteDataSource {
@@ -12,4 +13,5 @@ abstract class FirebaseRemoteDataSource {
 
   ///destinations
   Future<List<DestinationEntity>> getDestinationCards();
+  Future<List<JourneyEntity>> getJourneyCards();
 }

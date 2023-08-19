@@ -13,7 +13,8 @@ import '../../dependency_injection.dart';
 import '../../utils/app_colors.dart';
 
 class SplashScreen extends StatefulWidget {
-  const SplashScreen({super.key});
+  final String? uid;
+  const SplashScreen({super.key, this.uid});
 
   @override
   State<SplashScreen> createState() => _SplashScreenState();
@@ -141,8 +142,7 @@ class _SplashScreenState extends State<SplashScreen> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) =>
-                                    LoginScreen()), // Replace NewPage with the actual new page you want to navigate to
+                                builder: (context) => LoginScreen()),
                           );
                         },
                       ),

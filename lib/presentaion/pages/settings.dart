@@ -1,3 +1,4 @@
+import 'package:cosmoventure/main.dart';
 import 'package:cosmoventure/presentaion/bloc/settings/settings_bloc.dart';
 import 'package:cosmoventure/presentaion/pages/profile.dart';
 import 'package:cosmoventure/presentaion/pages/splash.dart';
@@ -46,6 +47,7 @@ class _SettingScreenState extends State<SettingScreen> {
             if (state is SettingsLoaded) {
               return _bodyWidget(state.user.name!);
             }
+
             return const Scaffold(
               backgroundColor: AppColors.black,
               body: Center(
@@ -332,9 +334,10 @@ class _SettingScreenState extends State<SettingScreen> {
               child: const Text("Logout"),
               onPressed: () {
                 Navigator.pop(context);
-                setState(() {});
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => SplashScreen()));
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => SplashScreen()),
+                );
               },
             ),
           ],

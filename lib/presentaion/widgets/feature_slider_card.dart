@@ -39,8 +39,8 @@ class FeatureSliderCard extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             const SizedBox(height: 16.0),
-            Image(
-              image: AssetImage(image),
+            Image.network(
+              image,
               width: 150,
               height: 150,
             ),
