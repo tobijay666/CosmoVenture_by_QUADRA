@@ -1,4 +1,4 @@
-# cosmoventure
+# CosmoVenture
 
 A concept implementation of an intergalactic space-travel mobile application.
 
