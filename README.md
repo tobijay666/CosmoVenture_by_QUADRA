@@ -6,7 +6,7 @@ A new Flutter project.
 
 This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
+Here are a few resources to get you started if this is your first Flutter project:
 
 - [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
 - [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
@@ -26,13 +26,13 @@ Follow these steps to set up the Campus Connect app locally:
    https://github.com/tobijay666/cosmoventure.git
    ```
 
-2. **Flutter Installation:** Make sure you have Flutter installed on your system. If not, follow the installation guide at [Flutter Official Documentation](https://flutter.dev/docs/get-started/install).
+2. **Flutter Installation: ** Please make sure you install Flutter on your system. If not, follow the installation guide at [Flutter Official Documentation](https://flutter.dev/docs/get-started/install).
 
 3. **Dependencies:** Navigate to the project directory and install the required dependencies:
    ```
    flutter pub get
 
-4. **Firebase Setup:** Campus Connect uses Firebase for authentication and database. Create a new project on [Firebase Console](https://console.firebase.google.com/) and replace the Firebase configuration in `lib/config/firebase_config.dart`.
+4. **Firebase Setup:** Cosmoventure uses Firebase for authentication and database. Create a new project on [Firebase Console](https://console.firebase.google.com/) and replace the Firebase configuration in `lib/config/firebase_config.dart`.
 
 5. **Run the App:** Launch the app on an emulator or physical device using:
    ```
@@ -44,4 +44,4 @@ Follow these steps to set up the Campus Connect app locally:
 
 - Flutter: Frontend UI framework
 - Firebase: Authentication, Cloud Firestore database, Cloud Messaging
-- Dart: Programming language for Flutter
+- Dart: A programming language for Flutter
